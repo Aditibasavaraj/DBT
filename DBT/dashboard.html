@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DBT Awareness — Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800">
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-40"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            DBT
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold">Dashboard</h1>
+            <p class="text-sm text-slate-600">Mock analytics overview</p>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./verification.html" class="hover:text-primary-700"
+            >Verification</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a href="./notifications.html" class="hover:text-primary-700"
+            >Notifications</a
+          >
+          <a href="./resources.html" class="hover:text-primary-700"
+            >Resources</a
+          >
+          <a href="./contact.html" class="hover:text-primary-700">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <!-- Top summary cards -->
+      <section
+        aria-label="Summary stats"
+        class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+      >
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
+        >
+          <div class="text-slate-500 text-sm">Total Students</div>
+          <div class="mt-2 flex items-end justify-between">
+            <div class="text-3xl font-semibold">50</div>
+            <div
+              class="text-xs px-2 py-1 rounded-full bg-slate-100 text-slate-700"
+            >
+              All
+            </div>
+          </div>
+        </div>
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
+        >
+          <div class="text-slate-500 text-sm">DBT-enabled Accounts</div>
+          <div class="mt-2 flex items-end justify-between">
+            <div class="text-3xl font-semibold text-green-700">35</div>
+            <div
+              class="text-xs px-2 py-1 rounded-full bg-green-100 text-green-800"
+            >
+              Enabled
+            </div>
+          </div>
+        </div>
+        <div
+          class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
+        >
+          <div class="text-slate-500 text-sm">Pending Students</div>
+          <div class="mt-2 flex items-end justify-between">
+            <div class="text-3xl font-semibold text-amber-700">15</div>
+            <div
+              class="text-xs px-2 py-1 rounded-full bg-amber-100 text-amber-800"
+            >
+              Pending
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Module navigation -->
+      <section aria-label="Modules" class="mt-8">
+        <h2 class="text-lg font-semibold">Explore modules</h2>
+        <div class="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <a
+            href="./index.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Home / Awareness</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              Understand Aadhaar-linked vs DBT-enabled accounts.
+            </p>
+          </a>
+          <a
+            href="./verification.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Account Verification</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              Simulate DBT readiness check.
+            </p>
+          </a>
+          <a
+            href="./quiz.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Quiz</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              Take a quick 5-question quiz.
+            </p>
+          </a>
+          <a
+            href="./notifications.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Notifications</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              View latest updates and alerts.
+            </p>
+          </a>
+          <a
+            href="./resources.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Resources</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              Campaign materials and guides.
+            </p>
+          </a>
+          <a
+            href="./contact.html"
+            class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+          >
+            <div class="flex items-center justify-between">
+              <div class="font-medium">Contact / Feedback</div>
+              <span
+                class="text-primary-600 group-hover:translate-x-0.5 transition"
+                >→</span
+              >
+            </div>
+            <p class="mt-2 text-sm text-slate-600">
+              Share feedback or ask questions.
+            </p>
+          </a>
+        </div>
+      </section>
+
+      <!-- Chart and details -->
+      <section class="mt-8 grid gap-6 md:grid-cols-2">
+        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
+          <h2 class="font-semibold">DBT Disbursed Over Time</h2>
+          <canvas id="benefitsChart" class="mt-4"></canvas>
+        </div>
+        <div class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm">
+          <h2 class="font-semibold">Summary</h2>
+          <ul class="mt-4 space-y-2 text-sm text-slate-700">
+            <li><span class="font-medium">Active students:</span> 12,540</li>
+            <li>
+              <span class="font-medium">DBT-enabled accounts:</span> 10,320
+            </li>
+            <li><span class="font-medium">Pending seeding:</span> 1,870</li>
+            <li><span class="font-medium">Failed last month:</span> 210</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="./js/main.js"></script>
+    <script>
+      window.DBT && DBT.initDashboardCharts();
+    </script>
+  </body>
+</html>
+
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarConnect — Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800">
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-40"
+    >
+      <div class="container-max px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold brand"
+          >
+            SC
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold">Admin Dashboard</h1>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./checker.html" class="hover:text-primary-700"
+            >DBT Checker</a
+          >
+          <a href="./awareness.html" class="hover:text-primary-700"
+            >Awareness</a
+          >
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarships</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700">Help</a>
+          <a href="./dashboard.html" class="text-primary-700 font-medium"
+            >Admin</a
+          >
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-max px-4 py-10">
+      <section class="grid gap-6 md:grid-cols-2">
+        <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h2 class="font-semibold">Recent Activity</h2>
+          <ul class="mt-3 list-disc pl-5 text-sm text-slate-600">
+            <li>10 new students registered</li>
+            <li>3 DBT failures flagged for review</li>
+            <li>Outreach email sent to 120 students</li>
+          </ul>
+        </article>
+        <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h2 class="font-semibold">Quick Actions</h2>
+          <div class="mt-3 flex flex-wrap gap-3">
+            <a
+              href="#"
+              class="rounded-lg border border-slate-300 px-3 py-1 text-sm hover:border-primary-500 hover:text-primary-700"
+              >Export CSV</a
+            >
+            <a
+              href="#"
+              class="rounded-lg border border-slate-300 px-3 py-1 text-sm hover:border-primary-500 hover:text-primary-700"
+              >Sync NPCI Mapper</a
+            >
+            <a
+              href="#"
+              class="rounded-lg border border-slate-300 px-3 py-1 text-sm hover:border-primary-500 hover:text-primary-700"
+              >Send Reminder</a
+            >
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <script src="./assets/js/script.js"></script>
+    <script>
+      /* no page-specific init */
+    </script>
+  </body>
+</html>
