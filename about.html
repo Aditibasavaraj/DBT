@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarConnect — About</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800 font-inter">
+    <!-- Header -->
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-40"
+    >
+      <div class="container-max px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            SC
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold">About Us</h1>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./checker.html" class="hover:text-primary-700"
+            >DBT Checker</a
+          >
+          <a href="./awareness.html" class="hover:text-primary-700"
+            >Awareness</a
+          >
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarships</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700">Help</a>
+          <a href="./dashboard.html" class="hover:text-primary-700">Admin</a>
+          <a href="./about.html" class="text-primary-700 font-medium">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-max px-4 py-10">
+      <section
+        class="max-w-3xl mx-auto bg-white border border-slate-200 rounded-2xl p-6 md:p-10 shadow-sm"
+      >
+        <h2 class="text-2xl font-semibold text-primary-600">
+          About Our Website
+        </h2>
+        <p class="mt-4 text-slate-700 leading-relaxed">
+          <span class="font-semibold">ScholarConnect</span> is a digital
+          platform created to spread awareness about
+          <span class="font-medium">Direct Benefit Transfer (DBT)</span> and to
+          guide students in verifying their Aadhaar-bank linkage. The website
+          provides simple tools, resources, and interactive modules to help
+          students understand DBT and ensure they can access government benefits
+          and scholarships without hurdles.
+        </p>
+
+        <h3 class="mt-8 text-xl font-semibold text-primary-600">
+          Why ScholarConnect?
+        </h3>
+        <ul class="mt-4 space-y-2 text-slate-700 list-disc list-inside">
+          <li>
+            ✔ Easy-to-use DBT checker tool for Aadhaar & bank account seeding
+          </li>
+          <li>✔ Awareness materials to educate students and families</li>
+          <li>✔ Scholarship guides and resources</li>
+          <li>✔ Quizzes and interactive learning to build awareness</li>
+          <li>✔ Admin dashboard for tracking overall progress</li>
+        </ul>
+
+        <h3 class="mt-8 text-xl font-semibold text-primary-600">Our Mission</h3>
+        <p class="mt-4 text-slate-700 leading-relaxed">
+          Our mission is to bridge the gap between students and government
+          benefit schemes by promoting digital awareness, transparency, and
+          financial inclusion. We aim to empower students so that they never
+          miss out on the support they deserve.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DBT Awareness — Home</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="description" content="Understand the difference between Aadhaar-linked bank accounts and DBT-enabled Aadhaar-seeded bank accounts, with FAQs for students.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { primary: { 50:'#eef2ff',100:'#e0e7ff',200:'#c7d2fe',300:'#a5b4fc',400:'#818cf8',500:'#6366f1',600:'#4f46e5',700:'#4338ca',800:'#3730a3',900:'#312e81' }}}}
+    }
+  </script>
+</head>
+<body class="bg-white text-slate-800">
+  <header class="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-40">
+    <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold">DBT</div>
+        <div>
+          <h1 class="text-xl sm:text-2xl font-semibold">Student Awareness: Bank Accounts for DBT</h1>
+          <p class="text-sm text-slate-600">A quick guide to receive scholarships and benefits on time</p>
+        </div>
+      </div>
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        <a href="./index.html" class="hover:text-primary-700">Home</a>
+        <a href="./verification.html" class="hover:text-primary-700">Verification</a>
+        <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+        <a href="./notifications.html" class="hover:text-primary-700">Notifications</a>
+        <a href="./resources.html" class="hover:text-primary-700">Resources</a>
+        <a href="./contact.html" class="hover:text-primary-700">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-6xl mx-auto px-4 py-10">
+    <section id="overview" class="space-y-6">
+      <div class="text-center max-w-3xl mx-auto">
+        <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Aadhaar-linked vs DBT-enabled Aadhaar-seeded accounts</h2>
+        <p class="mt-3 text-slate-600">Both use your Aadhaar, but only DBT-enabled Aadhaar-seeded accounts are ready to receive government benefits directly.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6 mt-6">
+        <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-lg font-semibold">Aadhaar-linked bank account</h3>
+          <p class="mt-2 text-slate-600">Your bank has your Aadhaar number mapped to your customer profile for eKYC and identification.</p>
+          <ul class="mt-4 space-y-2 text-slate-700 list-disc pl-5">
+            <li>Used for identity verification and eKYC.</li>
+            <li>May help with login, verification, or onboarding with your bank.</li>
+            <li><span class="font-semibold">Not guaranteed</span> to receive Direct Benefit Transfer (DBT) payments.</li>
+          </ul>
+          <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-slate-100 px-3 py-1 text-xs text-slate-700">
+            <span class="h-2 w-2 rounded-full bg-amber-500"></span>
+            Identity-linked only
+          </div>
+        </article>
+
+        <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
+          <h3 class="text-lg font-semibold">DBT-enabled Aadhaar-seeded bank account</h3>
+          <p class="mt-2 text-slate-600">Your Aadhaar is <span class="font-semibold">seeded</span> to the account and enabled in the NPCI mapper to receive DBT.</p>
+          <ul class="mt-4 space-y-2 text-slate-700 list-disc pl-5">
+            <li>Aadhaar is seeded to a specific account number.</li>
+            <li>Enabled in NPCI’s Aadhaar Payment Bridge System (APBS) for DBT.</li>
+            <li>Ready to receive scholarships, stipends, and other government benefits.</li>
+          </ul>
+          <div class="mt-4 inline-flex items-center gap-2 rounded-full bg-green-100 px-3 py-1 text-xs text-green-800">
+            <span class="h-2 w-2 rounded-full bg-green-600"></span>
+            DBT-ready
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="differences" class="mt-14">
+      <div class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm">
+        <h2 class="text-xl sm:text-2xl font-semibold">Key differences</h2>
+        <div class="mt-6 grid md:grid-cols-2 gap-8">
+          <div>
+            <h3 class="font-semibold text-slate-900">Aadhaar-linked account</h3>
+            <ul class="mt-3 space-y-2 text-slate-700 list-disc pl-5">
+              <li>Aadhaar present only for identity/eKYC at the bank-level.</li>
+              <li>No NPCI/APBS mapping for benefits.</li>
+              <li>Payments via DBT may fail or not be attempted.</li>
+              <li>Action needed: request seeding and DBT enablement.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="font-semibold text-slate-900">DBT-enabled Aadhaar-seeded account</h3>
+            <ul class="mt-3 space-y-2 text-slate-700 list-disc pl-5">
+              <li>Aadhaar mapped to a specific account in bank systems.</li>
+              <li>NPCI mapper updated; APBS routes DBT to this account.</li>
+              <li>Most reliable for receiving government transfers.</li>
+              <li>Keep account active and KYC updated to avoid rejections.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-6 bg-slate-50 border border-slate-200 rounded-xl p-4 text-sm text-slate-700">
+          <p><span class="font-semibold">Tip:</span> Ask your bank to confirm: “Is my Aadhaar <span class="underline">seeded</span> to this account and <span class="underline">DBT-enabled</span> in NPCI?”</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="mt-14">
+      <h2 class="text-2xl font-semibold">Frequently Asked Questions</h2>
+      <div class="mt-6 divide-y divide-slate-200 border border-slate-200 rounded-2xl overflow-hidden">
+        <div class="faq-item">
+          <button class="w-full text-left px-5 py-4 flex items-center justify-between gap-6 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500" aria-expanded="false" aria-controls="faq-1-content" id="faq-1-button">
+            <span class="font-medium">How do I make my account DBT-enabled?</span>
+            <svg class="h-5 w-5 text-slate-500 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+          </button>
+          <div id="faq-1-content" role="region" aria-labelledby="faq-1-button" class="hidden px-5 pb-5 text-slate-700">
+            Visit your bank branch or mobile banking and request <span class="font-semibold">Aadhaar seeding</span> for the specific account and ask to enable it for <span class="font-semibold">DBT/APBS</span>. Keep your Aadhaar and passbook/debit card handy.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="w-full text-left px-5 py-4 flex items-center justify-between gap-6 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500" aria-expanded="false" aria-controls="faq-2-content" id="faq-2-button">
+            <span class="font-medium">Can I have multiple DBT-enabled accounts?</span>
+            <svg class="h-5 w-5 text-slate-500 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+          </button>
+          <div id="faq-2-content" role="region" aria-labelledby="faq-2-button" class="hidden px-5 pb-5 text-slate-700">
+            NPCI typically maps one active Aadhaar-seeded account per bank for DBT. Benefits are routed to the account marked active in the mapper. Confirm with your bank which account is active.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="w-full text-left px-5 py-4 flex items-center justify-between gap-6 hover:bg-slate-50 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500" aria-expanded="false" aria-controls="faq-3-content" id="faq-3-button">
+            <span class="font-medium">What if my DBT payment failed?</span>
+            <svg class="h-5 w-5 text-slate-500 transition-transform" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.24 4.24a.75.75 0 01-1.06 0L5.21 8.29a.75.75 0 01.02-1.08z" clip-rule="evenodd"/></svg>
+          </button>
+          <div id="faq-3-content" role="region" aria-labelledby="faq-3-button" class="hidden px-5 pb-5 text-slate-700">
+            Check with your bank that your account is <span class="font-semibold">active</span>, KYC is up to date, Aadhaar is <span class="font-semibold">seeded</span>, and the account is <span class="font-semibold">DBT-enabled</span> in NPCI. Ask for the latest APBS status.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mt-14">
+      <div class="text-center text-sm text-slate-600">
+        For official details, refer to your bank and government scheme guidelines.
+      </div>
+    </section>
+  </main>
+
+  <script src="./js/main.js"></script>
+  <script>window.DBT && window.DBT.initFaqAccordions();</script>
+</body>
+</html>
+
