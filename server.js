@@ -1,70 +1,39 @@
-// server.js
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const fs = require('fs');
-const path = require('path');
-
+const express = require("express");
 const app = express();
 const PORT = 5000;
 
-// Middleware
-app.use(cors());
-app.use(bodyParser.json());
+// --- Middleware ---
+app.use(express.json()); // to parse JSON request bodies
+app.use(express.static("public")); // if you have static frontend files
 
-// JSON data path
-const dataPath = path.join(__dirname, 'dbtData.json');
-
-// Helper: read DBT data
-function getDBTData() {
-  const raw = fs.readFileSync(dataPath);
-  return JSON.parse(raw);
-}
-
-// API route to check DBT status (optional)
-app.post('/check-dbt', (req, res) => {
-  const { aadhaar, account } = req.body;
-  if (!aadhaar || !account) return res.status(400).json({ error: 'Aadhaar and account required' });
-
-  const dbtData = getDBTData();
-  const record = dbtData.find(r => r.aadhaar === aadhaar && r.account === account);
-
-  if (record) {
-    res.json({ status: record.status });
-  } else {
-    res.json({ status: 'No record found' });
-  }
-});
-
-// Static students data for notifications
-const students = [
-  {
-    aadhaar: "123456789012",
-    name: "Aditi Basavaraj",
-    dbtStatus: "Ready for DBT",
-    scholarships: ["Merit Scholarship 2025", "STEM Excellence Award"],
-    notifications: [
-      { type: "info", message: "New scholarship applications open from 1st Oct." },
-      { type: "alert", message: "Verify your Aadhaar-seeded account to receive DBT." },
-    ],
-  },
-  {
-    aadhaar: "987654321098",
-    name: "Ravi Kumar",
-    dbtStatus: "Not linked",
-    scholarships: ["Arts Scholarship 2025"],
-    notifications: [{ type: "warning", message: "KYC refresh required." }],
-  },
+// --- Existing routes ---
+// e.g., scholarships
+const scholarships = [
+  { title: "Merit Scholarship A", description: "...", applyLink: "...", formLink: "..." },
+  // ...
 ];
+app.get("/scholarships", (req, res) => res.json(scholarships));
 
-// Route to get student notifications
-app.get("/students/:aadhaar", (req, res) => {
-  const student = students.find((s) => s.aadhaar === req.params.aadhaar);
-  if (!student) return res.status(404).json({ error: "Student not found" });
-  res.json(student);
+// --- Add the verification endpoint here ---
+app.post("/check-dbt-status", (req, res) => {
+  const { name, aadhaar, account } = req.body;
+
+  if (!name || !aadhaar || !account) {
+    return res.status(400).json({ status: "error", message: "All fields are required." });
+  }
+
+  const isDBTEnabled = parseInt(account.slice(-1)) % 2 === 0;
+
+  res.json({
+    name,
+    aadhaar,
+    account,
+    dbtStatus: isDBTEnabled ? "DBT-enabled" : "Not DBT-enabled",
+    message: isDBTEnabled
+      ? "Congratulations! Your account is DBT-enabled."
+      : "Your account is not DBT-enabled yet. Please check your bank/Aadhaar linkage."
+  });
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// --- Start the server ---
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
