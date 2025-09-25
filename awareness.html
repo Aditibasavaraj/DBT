@@ -1,59 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ScholarConnect — Awareness</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./assets/css/style.css">
-  <script>tailwind.config={theme:{extend:{colors:{primary:{500:'#6366f1',600:'#4f46e5'}}}}}</script>
-</head>
-<body class="bg-white text-slate-800">
-  <header class="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-40">
-    <div class="container-max px-4 py-4 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold brand">SC</div>
-        <div>
-          <h1 class="text-xl sm:text-2xl font-semibold">Awareness & Learning</h1>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarConnect — Awareness</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                500: "#6366f1",
+                600: "#4f46e5",
+              },
+            },
+            fontFamily: {
+              inter: ["Inter", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800 font-inter">
+    <!-- Header -->
+    <header class="border-b border-slate-200 bg-white sticky top-0 z-40">
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            SC
+          </div>
+          <h1 class="text-xl sm:text-2xl font-semibold">
+            Awareness & Learning
+          </h1>
         </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./checker.html" class="hover:text-primary-700"
+            >DBT Checker</a
+          >
+          <a href="./awareness.html" class="text-primary-700 font-medium"
+            >Awareness</a
+          >
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarships</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700">Help</a>
+          <a href="./dashboard.html" class="hover:text-primary-700">Admin</a>
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+        </nav>
       </div>
-      <nav class="hidden sm:flex items-center gap-6 text-sm">
-        <a href="./index.html" class="hover:text-primary-700">Home</a>
-        <a href="./checker.html" class="hover:text-primary-700">DBT Checker</a>
-        <a href="./awareness.html" class="text-primary-700 font-medium">Awareness</a>
-        <a href="./scholarships.html" class="hover:text-primary-700">Scholarships</a>
-        <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
-        <a href="./help.html" class="hover:text-primary-700">Help</a>
-        <a href="./dashboard.html" class="hover:text-primary-700">Admin</a>
-        <a href="./about.html" class="hover:text-primary-700">About</a>
-      </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container-max px-4 py-10">
-    <section class="grid gap-6 md:grid-cols-2">
-      <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">Aadhaar-linked account</h2>
-        <ul class="mt-2 list-disc pl-5 text-slate-600">
-          <li>Used for identity verification (eKYC) at bank level.</li>
-          <li>Does not guarantee DBT transfers.</li>
-        </ul>
-      </article>
-      <article class="rounded-2xl border border-slate-200 p-6 shadow-sm">
-        <h2 class="text-lg font-semibold">DBT-enabled Aadhaar-seeded account</h2>
-        <ul class="mt-2 list-disc pl-5 text-slate-600">
-          <li>Aadhaar seeded to a specific account.</li>
-          <li>Enabled in NPCI/APBS; ready to receive DBT.</li>
-        </ul>
-      </article>
-    </section>
-  </main>
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <!-- Page Heading -->
+      <h1 class="text-3xl font-bold mb-4">
+        Understanding Aadhaar & DBT Accounts
+      </h1>
+      <p class="text-slate-600 mb-10 text-lg">
+        Learn the difference between Aadhaar-linked accounts and DBT-enabled
+        Aadhaar-seeded accounts to ensure you receive government benefits
+        directly and securely.
+      </p>
 
-  <script src="./assets/js/script.js"></script>
-  <script>/* no page-specific init */</script>
-</body>
+      <!-- Card Grid -->
+      <section class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <!-- Card 1 -->
+        <div
+          class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition duration-300"
+        >
+          <h2 class="text-xl font-semibold mb-3 text-primary-600">
+            Aadhaar-linked account
+          </h2>
+          <ul class="list-disc pl-5 text-slate-700 space-y-2">
+            <li>Used for identity verification (eKYC) at bank level.</li>
+            <li>Does not guarantee DBT transfers.</li>
+          </ul>
+        </div>
+
+        <!-- Card 2 -->
+        <div
+          class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition duration-300"
+        >
+          <h2 class="text-xl font-semibold mb-3 text-primary-600">
+            DBT-enabled Aadhaar-seeded account
+          </h2>
+          <ul class="list-disc pl-5 text-slate-700 space-y-2">
+            <li>Aadhaar seeded to a specific account.</li>
+            <li>Enabled in NPCI/APBS; ready to receive DBT transfers.</li>
+          </ul>
+        </div>
+
+        <!-- Card 3 -->
+        <div
+          class="bg-white rounded-2xl shadow-lg border border-slate-200 p-6 hover:shadow-xl transition duration-300"
+        >
+          <h2 class="text-xl font-semibold mb-3 text-primary-600">
+            Tips & Best Practices
+          </h2>
+          <ul class="list-disc pl-5 text-slate-700 space-y-2">
+            <li>Always link Aadhaar to the correct bank account.</li>
+            <li>Verify your DBT status regularly online.</li>
+            <li>Update your bank or Aadhaar details if necessary.</li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </body>
 </html>
-
