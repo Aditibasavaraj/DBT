@@ -21,7 +21,7 @@ function getDBTData() {
   return JSON.parse(raw);
 }
 
-// API route
+// API route to check DBT status (optional)
 app.post('/check-dbt', (req, res) => {
   const { aadhaar, account } = req.body;
   if (!aadhaar || !account) return res.status(400).json({ error: 'Aadhaar and account required' });
@@ -36,15 +36,7 @@ app.post('/check-dbt', (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
-const express = require("express");
-const cors = require("cors");
-const app = express();
-const port = 5000;
-
-app.use(cors());
-app.use(express.json());
-
+// Static students data for notifications
 const students = [
   {
     aadhaar: "123456789012",
@@ -65,13 +57,14 @@ const students = [
   },
 ];
 
+// Route to get student notifications
 app.get("/students/:aadhaar", (req, res) => {
   const student = students.find((s) => s.aadhaar === req.params.aadhaar);
   if (!student) return res.status(404).json({ error: "Student not found" });
   res.json(student);
 });
 
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
-
