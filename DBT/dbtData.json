@@ -1,0 +1,37 @@
+[
+  { "aadhaar": "123456789012", "account": "1111111111", "status": "Ready for DBT" },
+  { "aadhaar": "987654321098", "account": "2222222222", "status": "Not linked" },
+  { "aadhaar": "456789123456", "account": "3333333333", "status": "Pending verification" },
+  { "aadhaar": "654321987654", "account": "4444444444", "status": "Ready for DBT" },
+  { "aadhaar": "321654987321", "account": "5555555555", "status": "Not linked" },
+  { "aadhaar": "789123456789", "account": "6666666666", "status": "Pending verification" },
+  { "aadhaar": "147258369012", "account": "7777777777", "status": "Ready for DBT" },
+  { "aadhaar": "963852741025", "account": "8888888888", "status": "Not linked" },
+  { "aadhaar": "258369147036", "account": "9999999999", "status": "Ready for DBT" }
+]
+[
+  {
+    "aadhaar": "123456789012",
+    "name": "Aditi Basavaraj",
+    "dbtStatus": "Ready for DBT",
+    "scholarships": [
+      "Merit Scholarship 2025",
+      "STEM Excellence Award"
+    ],
+    "notifications": [
+      { "type": "info", "message": "New scholarship applications open from 1st Oct." },
+      { "type": "alert", "message": "Verify your Aadhaar-seeded account to receive DBT." }
+    ]
+  },
+  {
+    "aadhaar": "987654321098",
+    "name": "Ravi Kumar",
+    "dbtStatus": "Not linked",
+    "scholarships": [
+      "Arts Scholarship 2025"
+    ],
+    "notifications": [
+      { "type": "warning", "message": "KYC refresh required." }
+    ]
+  }
+]
