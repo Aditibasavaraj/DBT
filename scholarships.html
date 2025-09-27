@@ -92,6 +92,13 @@
             const card = document.createElement("article");
             card.className =
               "rounded-2xl border border-slate-200 p-6 bg-white shadow-sm hover:shadow-md transition-all";
+
+            // Determine Apply link based on scholarship title and card number
+            let applyLink = "https://ssp.karnataka.gov.in/"; // default link
+            if (s.title.toLowerCase().includes("merit") && s.cardNumber === 2) {
+              applyLink = "https://scholarships.gov.in/ApplicationForm/login";
+            }
+
             card.innerHTML = `
               <h2 class="text-lg font-semibold text-primary-600">${s.title}</h2>
               <p class="mt-2 text-slate-700 text-sm leading-relaxed">${s.description}</p>
@@ -99,9 +106,8 @@
                 <li>✔ Check eligibility requirements</li>
                 <li>✔ Ensure Aadhaar-linked account</li>
               </ul>
-              <div class="mt-4 flex gap-2">
-                <a class="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 text-sm" href="${s.applyLink}" target="_blank">Apply</a>
-                <a class="px-3 py-1 bg-slate-200 text-slate-800 rounded hover:bg-slate-300 text-sm" href="${s.formLink}" download>Download Form</a>
+              <div class="mt-4">
+                <a class="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 text-sm block text-center" href="${applyLink}" target="_blank">Apply Now</a>
               </div>
             `;
             container.appendChild(card);

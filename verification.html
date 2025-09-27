@@ -181,6 +181,12 @@
               class="hidden mt-4 rounded-lg p-4 border text-sm"
             ></div>
 
+            <!-- Conditional Action Buttons -->
+            <div
+              id="action-buttons"
+              class="hidden mt-6 flex flex-col sm:flex-row gap-4"
+            ></div>
+
             <!-- Verification History -->
             <div id="history-container" class="hidden mt-6">
               <h3 class="text-sm font-semibold text-slate-700">
@@ -204,12 +210,15 @@
       const messageDiv = document.getElementById("verify-message");
       const historyContainer = document.getElementById("history-container");
       const historyList = document.getElementById("history-list");
+      const actionButtons = document.getElementById("action-buttons");
 
       let history = [];
 
       form.addEventListener("submit", async (e) => {
         e.preventDefault();
         messageDiv.classList.add("hidden");
+        actionButtons.innerHTML = "";
+        actionButtons.classList.add("hidden");
         verifyBtn.disabled = true;
         spinner.classList.remove("hidden");
 
@@ -242,6 +251,19 @@
             ${data.bank ? `<p><strong>Bank:</strong> ${data.bank}</p>` : ""}
           `;
           messageDiv.classList.remove("hidden");
+
+          // Show buttons **only if Not linked**
+          if (result.dbtStatus === "Not linked") {
+            actionButtons.innerHTML = `
+              <a href="./DBT_Guide.pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                📄 Get DBT Enablement Guide
+              </a>
+              <a href="https://nccpi.gov.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">
+                🌐 Go to NCCPI Portal
+              </a>
+            `;
+            actionButtons.classList.remove("hidden");
+          }
 
           // Update session history
           history.unshift(result.message);
