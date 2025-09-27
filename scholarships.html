@@ -76,7 +76,7 @@
     <script>
       async function loadScholarships() {
         try {
-          const res = await fetch("http://localhost:5000/scholarships");
+          const res = await fetch("https://dbt-trial-repo.onrender.com/scholarships"); //changed server link
           if (!res.ok) throw new Error("Failed to fetch scholarships");
 
           const scholarships = await res.json();
