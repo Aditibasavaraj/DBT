@@ -38,9 +38,6 @@
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
           <a href="./index.html" class="hover:text-primary-700">Home</a>
-          <a href="./checker.html" class="hover:text-primary-700"
-            >DBT Checker</a
-          >
           <a href="./awareness.html" class="hover:text-primary-700"
             >Awareness</a
           >
@@ -78,12 +75,40 @@
 
     <script>
       async function loadScholarships() {
+        const container = document.getElementById("scholarship-container");
+
         try {
           const res = await fetch("http://localhost:5000/scholarships");
           if (!res.ok) throw new Error("Failed to fetch scholarships");
 
           const scholarships = await res.json();
-          const container = document.getElementById("scholarship-container");
+          renderScholarships(scholarships);
+        } catch (err) {
+          console.warn("Fetch failed, using fallback data.", err);
+
+          // Fallback hardcoded data
+          const fallbackScholarships = [
+            {
+              title: "Merit Scholarship 1",
+              description: "Eligibility and benefits details.",
+              cardNumber: 1,
+            },
+            {
+              title: "Merit Scholarship 2",
+              description: "Special scholarship for high-performing students.",
+              cardNumber: 2,
+            },
+            {
+              title: "Need-Based Scholarship",
+              description: "For students with financial need.",
+              cardNumber: 3,
+            },
+          ];
+
+          renderScholarships(fallbackScholarships);
+        }
+
+        function renderScholarships(scholarships) {
           container.innerHTML = "";
 
           if (scholarships.length === 0) {
@@ -95,6 +120,13 @@
             const card = document.createElement("article");
             card.className =
               "rounded-2xl border border-slate-200 p-6 bg-white shadow-sm hover:shadow-md transition-all";
+
+            // Determine Apply link
+            let applyLink = "https://ssp.karnataka.gov.in/"; // default link
+            if (s.title.toLowerCase().includes("merit") && s.cardNumber === 2) {
+              applyLink = "https://scholarships.gov.in/ApplicationForm/login";
+            }
+
             card.innerHTML = `
               <h2 class="text-lg font-semibold text-primary-600">${s.title}</h2>
               <p class="mt-2 text-slate-700 text-sm leading-relaxed">${s.description}</p>
@@ -102,18 +134,12 @@
                 <li>✔ Check eligibility requirements</li>
                 <li>✔ Ensure Aadhaar-linked account</li>
               </ul>
-              <div class="mt-4 flex gap-2">
-                <a class="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 text-sm" href="${s.applyLink}" target="_blank">Apply</a>
-                <a class="px-3 py-1 bg-slate-200 text-slate-800 rounded hover:bg-slate-300 text-sm" href="${s.formLink}" download>Download Form</a>
+              <div class="mt-4">
+                <a class="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 text-sm block text-center" href="${applyLink}" target="_blank">Apply Now</a>
               </div>
             `;
             container.appendChild(card);
           });
-        } catch (err) {
-          console.error(err);
-          document.getElementById(
-            "scholarship-container"
-          ).innerHTML = `<p class="text-red-600">Error loading scholarships. Please try again later.</p>`;
         }
       }
 
