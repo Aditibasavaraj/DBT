@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-translate="verification.title">DBT Awareness — Verification</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./js/language-switcher.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800 font-inter">
+    <!-- Header -->
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-40"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            DBT
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold" data-translate="verification.title">
+              Account Verification
+            </h1>
+            <p class="text-sm text-slate-600" data-translate="verification.subtitle">
+              Check if your account is DBT-ready
+            </p>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700" data-translate="nav.home">Home</a>
+          <a href="./verification.html" class="text-primary-700 font-medium" data-translate="nav.verification"
+            >Verification</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700" data-translate="nav.quiz">Quiz</a>
+          <a href="./resources.html" class="hover:text-primary-700" data-translate="nav.resources"
+            >Resources</a
+          >
+          <a href="./contact.html" class="hover:text-primary-700" data-translate="nav.contact">Contact</a>
+          <a href="./admin.html" class="text-slate-700 hover:text-primary-600" data-translate="nav.admin"
+            >Admin</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <section>
+        <div
+          class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm"
+        >
+          <h2 class="text-xl sm:text-2xl font-semibold" data-translate="verification.pageTitle">
+            Student Account Verification
+          </h2>
+          <p class="mt-2 text-slate-600 text-sm" data-translate="verification.description">
+            Simulated check against <code>/check-dbt-status</code>.
+          </p>
+
+          <!-- Verification Form -->
+          <form
+            id="verification-form"
+            class="mt-6 grid gap-5 max-w-2xl"
+            novalidate
+          >
+            <div>
+              <label for="name" class="block text-sm font-medium text-slate-700"
+                >Full Name</label
+              >
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                class="mt-2 w-full rounded-lg border-slate-300 focus:border-primary-500 focus:ring-primary-500"
+                placeholder="e.g., Ananya Sharma"
+              />
+            </div>
+
+            <div>
+              <label
+                for="aadhaar"
+                class="block text-sm font-medium text-slate-700"
+                >Aadhaar Number</label
+              >
+              <input
+                id="aadhaar"
+                name="aadhaar"
+                inputmode="numeric"
+                pattern="\d{12}"
+                maxlength="12"
+                minlength="12"
+                required
+                class="mt-2 w-full rounded-lg border-slate-300 focus:border-primary-500 focus:ring-primary-500"
+                placeholder="12-digit Aadhaar"
+              />
+            </div>
+
+            <div>
+              <label
+                for="account"
+                class="block text-sm font-medium text-slate-700"
+                >Bank Account Number</label
+              >
+              <input
+                id="account"
+                name="account"
+                type="text"
+                inputmode="numeric"
+                required
+                class="mt-2 w-full rounded-lg border-slate-300 focus:border-primary-500 focus:ring-primary-500"
+                placeholder="Your bank account number"
+              />
+            </div>
+
+            <div>
+              <label for="bank" class="block text-sm font-medium text-slate-700"
+                >Bank Name (Optional)</label
+              >
+              <input
+                id="bank"
+                name="bank"
+                type="text"
+                class="mt-2 w-full rounded-lg border-slate-300 focus:border-primary-500 focus:ring-primary-500"
+                placeholder="e.g., State Bank of India"
+              />
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button
+                id="verify-btn"
+                type="submit"
+                class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-4 py-2 font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                <svg
+                  id="verify-spinner"
+                  class="hidden -ml-0.5 mr-2 h-4 w-4 animate-spin"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <circle
+                    class="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    stroke-width="4"
+                  ></circle>
+                  <path
+                    class="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"
+                  ></path>
+                </svg>
+                Check DBT Status
+              </button>
+              <span class="text-xs text-slate-500"
+                >Your data is safe and not stored permanently.</span
+              >
+            </div>
+
+            <!-- Result Card -->
+            <div
+              id="verify-message"
+              class="hidden mt-4 rounded-lg p-4 border text-sm"
+            ></div>
+
+            <!-- Conditional Action Buttons -->
+            <div
+              id="action-buttons"
+              class="hidden mt-6 flex flex-col sm:flex-row gap-4"
+            ></div>
+
+            <!-- Verification History -->
+            <div id="history-container" class="hidden mt-6">
+              <h3 class="text-sm font-semibold text-slate-700">
+                Verification History (This Session)
+              </h3>
+              <ul
+                id="history-list"
+                class="mt-2 list-disc list-inside text-slate-600"
+              ></ul>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <!-- JS -->
+    <script>
+      const form = document.getElementById("verification-form");
+      const verifyBtn = document.getElementById("verify-btn");
+      const spinner = document.getElementById("verify-spinner");
+      const messageDiv = document.getElementById("verify-message");
+      const historyContainer = document.getElementById("history-container");
+      const historyList = document.getElementById("history-list");
+      const actionButtons = document.getElementById("action-buttons");
+
+      let history = [];
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        messageDiv.classList.add("hidden");
+        actionButtons.innerHTML = "";
+        actionButtons.classList.add("hidden");
+        verifyBtn.disabled = true;
+        spinner.classList.remove("hidden");
+
+        const data = {
+          name: form.name.value.trim(),
+          aadhaar: form.aadhaar.value.trim(),
+          account: form.account.value.trim(),
+          bank: form.bank.value.trim(),
+        };
+
+        try {
+          const res = await fetch("http://localhost:5000/check-dbt-status", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data),
+          });
+
+          const result = await res.json();
+
+          let color = "yellow";
+          if (result.dbtStatus === "DBT-enabled") color = "green";
+          else if (result.dbtStatus === "Not linked") color = "red";
+
+          messageDiv.className = `mt-4 rounded-lg p-4 border bg-${color}-100 text-${color}-800`;
+          messageDiv.innerHTML = `
+            <p>${result.message}</p>
+            <p><strong>Name:</strong> ${data.name}</p>
+            <p><strong>Aadhaar:</strong> ${data.aadhaar}</p>
+            <p><strong>Account:</strong> ${data.account}</p>
+            ${data.bank ? `<p><strong>Bank:</strong> ${data.bank}</p>` : ""}
+          `;
+          messageDiv.classList.remove("hidden");
+
+          // Show buttons **only if Not linked**
+          if (result.dbtStatus === "Not linked") {
+            actionButtons.innerHTML = `
+              <a href="./DBT_Guide.pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+                📄 Get DBT Enablement Guide
+              </a>
+              <a href="https://nccpi.gov.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">
+                🌐 Go to NCCPI Portal
+              </a>
+            `;
+            actionButtons.classList.remove("hidden");
+          }
+
+          // Update session history
+          history.unshift(result.message);
+          historyList.innerHTML = history
+            .map((msg) => `<li>${msg}</li>`)
+            .join("");
+          historyContainer.classList.remove("hidden");
+        } catch (err) {
+          messageDiv.className =
+            "mt-4 rounded-lg p-4 border border-red-400 bg-red-100 text-red-800";
+          messageDiv.innerHTML = `❌ Error checking DBT status: ${err.message}`;
+          messageDiv.classList.remove("hidden");
+        } finally {
+          verifyBtn.disabled = false;
+          spinner.classList.add("hidden");
+        }
+      });
+    </script>
+  </body>
+</html>
