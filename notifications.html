@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -113,3 +114,121 @@
     </script>
   </body>
 </html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DBT Awareness — Notifications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="./js/language-switcher.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800 font-inter">
+    <!-- Header -->
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-40"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            DBT
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold">Notifications</h1>
+            <p class="text-sm text-slate-600">Recent updates & alerts</p>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700" data-translate="nav.home">Home</a>
+          <a href="./verification.html" class="hover:text-primary-700"
+            >Verification</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700" data-translate="nav.quiz">Quiz</a>
+          <a href="./notifications.html" class="text-primary-700 font-medium"
+            >Notifications</a
+          >
+          <a href="./resources.html" class="hover:text-primary-700"
+            >Resources</a
+          >
+          <a href="./contact.html" class="hover:text-primary-700" data-translate="nav.contact">Contact</a>
+          <a href="./admin.html" class="text-slate-700 hover:text-primary-600"
+            >Admin</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="max-w-6xl mx-auto px-4 py-10">
+      <section id="notification-container" class="space-y-4">
+        <!-- Notifications will be dynamically injected here -->
+      </section>
+    </main>
+
+    <script>
+      async function loadNotifications() {
+        try {
+          // Replace with logged-in student's Aadhaar
+          const aadhaar = "123456789012";
+
+          const res = await fetch(`http://localhost:5000/students/${aadhaar}`);
+          if (!res.ok) throw new Error("Failed to fetch student data");
+
+          const student = await res.json();
+          const container = document.getElementById("notification-container");
+          container.innerHTML = "";
+
+          if (!student.notifications || student.notifications.length === 0) {
+            container.innerHTML = `<p class="text-slate-600">No notifications available.</p>`;
+            return;
+          }
+
+          student.notifications.forEach((n) => {
+            // Tailwind-safe fixed classes
+            let colorClass = "bg-slate-600";
+            if (n.type === "info") colorClass = "bg-green-600";
+            else if (n.type === "alert") colorClass = "bg-red-600";
+            else if (n.type === "warning") colorClass = "bg-amber-500";
+
+            const div = document.createElement("div");
+            div.className =
+              "rounded-xl border border-slate-200 p-4 bg-white flex items-start gap-4";
+            div.innerHTML = `
+              <span class="h-2 w-2 mt-2 rounded-full ${colorClass}"></span>
+              <div>
+                <p class="font-medium">${n.message}</p>
+              </div>
+            `;
+            container.appendChild(div);
+          });
+        } catch (err) {
+          console.error(err);
+          document.getElementById("notification-container").innerHTML = `
+            <p class="text-red-600">Error loading notifications. Please try again later.</p>
+          `;
+        }
+      }
+
+      loadNotifications();
+    </script>
+  </body>
+</html>
+>>>>>>> friend/main
