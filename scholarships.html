@@ -1,3 +1,7 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -75,13 +79,17 @@
 
     <script>
       async function loadScholarships() {
+<<<<<<< HEAD
         const container = document.getElementById("scholarship-container");
 
+=======
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
         try {
           const res = await fetch("http://localhost:5000/scholarships");
           if (!res.ok) throw new Error("Failed to fetch scholarships");
 
           const scholarships = await res.json();
+<<<<<<< HEAD
           renderScholarships(scholarships);
         } catch (err) {
           console.warn("Fetch failed, using fallback data.", err);
@@ -109,6 +117,9 @@
         }
 
         function renderScholarships(scholarships) {
+=======
+          const container = document.getElementById("scholarship-container");
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
           container.innerHTML = "";
 
           if (scholarships.length === 0) {
@@ -121,7 +132,11 @@
             card.className =
               "rounded-2xl border border-slate-200 p-6 bg-white shadow-sm hover:shadow-md transition-all";
 
+<<<<<<< HEAD
             // Determine Apply link
+=======
+            // Determine Apply link based on scholarship title and card number
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
             let applyLink = "https://ssp.karnataka.gov.in/"; // default link
             if (s.title.toLowerCase().includes("merit") && s.cardNumber === 2) {
               applyLink = "https://scholarships.gov.in/ApplicationForm/login";
@@ -140,6 +155,14 @@
             `;
             container.appendChild(card);
           });
+<<<<<<< HEAD
+=======
+        } catch (err) {
+          console.error(err);
+          document.getElementById(
+            "scholarship-container"
+          ).innerHTML = `<p class="text-red-600">Error loading scholarships. Please try again later.</p>`;
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
         }
       }
 
@@ -147,3 +170,135 @@
     </script>
   </body>
 </html>
+<<<<<<< HEAD
+=======
+=======
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-translate="scholarships.title">ScholarConnect — Scholarships</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./js/language-switcher.js"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800 font-inter">
+    <!-- Header -->
+    <header
+      class="border-b border-slate-200 bg-white/80 backdrop-blur sticky top-0 z-40"
+    >
+      <div class="container-max px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            SC
+          </div>
+          <div>
+            <h1 class="text-xl sm:text-2xl font-semibold" data-translate="scholarships.title">Scholarships</h1>
+          </div>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700" data-translate="nav.home">Home</a>
+          <a href="./awareness.html" class="hover:text-primary-700" data-translate="nav.awareness"
+            >Awareness</a
+          >
+          <a href="./scholarships.html" class="text-primary-700 font-medium" data-translate="nav.scholarships"
+            >Scholarships</a
+          >
+          <a href="./quiz.html" class="hover:text-primary-700" data-translate="nav.quiz">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700" data-translate="nav.help">Help</a>
+          <a href="./admin.html" class="text-slate-700 hover:text-primary-600" data-translate="nav.admin"
+            >Admin</a
+          >
+          <a href="./about.html" class="hover:text-primary-700" data-translate="nav.about">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container-max px-4 py-10">
+      <section class="max-w-5xl mx-auto space-y-6">
+        <p class="text-slate-700 text-lg" data-translate="scholarships.description">
+          Explore the latest scholarships available to students. Ensure your
+          Aadhaar-linked bank account is ready to receive Direct Benefit
+          Transfer (DBT) for eligible scholarships.
+        </p>
+
+        <!-- Scholarship Cards Container -->
+        <div
+          id="scholarship-container"
+          class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          <!-- Scholarships will be dynamically injected here -->
+        </div>
+      </section>
+    </main>
+
+    <script>
+      async function loadScholarships() {
+        try {
+          const res = await fetch("http://localhost:5000/scholarships");
+          if (!res.ok) throw new Error("Failed to fetch scholarships");
+
+          const scholarships = await res.json();
+          const container = document.getElementById("scholarship-container");
+          container.innerHTML = "";
+
+          if (scholarships.length === 0) {
+            container.innerHTML = `<p class="text-slate-600">No scholarships available right now.</p>`;
+            return;
+          }
+
+          scholarships.forEach((s) => {
+            const card = document.createElement("article");
+            card.className =
+              "rounded-2xl border border-slate-200 p-6 bg-white shadow-sm hover:shadow-md transition-all";
+
+            // Determine Apply link based on scholarship title and card number
+            let applyLink = "https://ssp.karnataka.gov.in/"; // default link
+            if (s.title.toLowerCase().includes("merit") && s.cardNumber === 2) {
+              applyLink = "https://scholarships.gov.in/ApplicationForm/login";
+            }
+
+            card.innerHTML = `
+              <h2 class="text-lg font-semibold text-primary-600">${s.title}</h2>
+              <p class="mt-2 text-slate-700 text-sm leading-relaxed">${s.description}</p>
+              <ul class="mt-3 space-y-1 text-slate-700 list-disc list-inside">
+                <li>✔ Check eligibility requirements</li>
+                <li>✔ Ensure Aadhaar-linked account</li>
+              </ul>
+              <div class="mt-4">
+                <a class="px-3 py-1 bg-primary-600 text-white rounded hover:bg-primary-700 text-sm block text-center" href="${applyLink}" target="_blank">Apply Now</a>
+              </div>
+            `;
+            container.appendChild(card);
+          });
+        } catch (err) {
+          console.error(err);
+          document.getElementById(
+            "scholarship-container"
+          ).innerHTML = `<p class="text-red-600">Error loading scholarships. Please try again later.</p>`;
+        }
+      }
+
+      loadScholarships();
+    </script>
+  </body>
+</html>
+>>>>>>> friend/main
+>>>>>>> ad9cd4e9a488973653a8fbec08aca7ca4a3f1d26
