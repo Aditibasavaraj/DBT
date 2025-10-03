@@ -3,7 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DBT Awareness — Verification</title>
+    <title data-translate="verification.title">
+      DBT Awareness — Verification
+    </title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -11,6 +13,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script src="./js/language-switcher.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -34,25 +37,55 @@
             DBT
           </div>
           <div>
-            <h1 class="text-xl sm:text-2xl font-semibold">
+            <h1
+              class="text-xl sm:text-2xl font-semibold"
+              data-translate="verification.title"
+            >
               Account Verification
             </h1>
-            <p class="text-sm text-slate-600">
+            <p
+              class="text-sm text-slate-600"
+              data-translate="verification.subtitle"
+            >
               Check if your account is DBT-ready
             </p>
           </div>
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="./index.html" class="hover:text-primary-700">Home</a>
-          <a href="./verification.html" class="text-primary-700 font-medium"
+          <a
+            href="./index.html"
+            class="hover:text-primary-700"
+            data-translate="nav.home"
+            >Home</a
+          >
+          <a
+            href="./verification.html"
+            class="text-primary-700 font-medium"
+            data-translate="nav.verification"
             >Verification</a
           >
-          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
-          <a href="./resources.html" class="hover:text-primary-700"
+          <a
+            href="./quiz.html"
+            class="hover:text-primary-700"
+            data-translate="nav.quiz"
+            >Quiz</a
+          >
+          <a
+            href="./resources.html"
+            class="hover:text-primary-700"
+            data-translate="nav.resources"
             >Resources</a
           >
-          <a href="./contact.html" class="hover:text-primary-700">Contact</a>
-          <a href="./admin.html" class="text-slate-700 hover:text-primary-600"
+          <a
+            href="./contact.html"
+            class="hover:text-primary-700"
+            data-translate="nav.contact"
+            >Contact</a
+          >
+          <a
+            href="./admin.html"
+            class="text-slate-700 hover:text-primary-600"
+            data-translate="nav.admin"
             >Admin</a
           >
         </nav>
@@ -65,10 +98,16 @@
         <div
           class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm"
         >
-          <h2 class="text-xl sm:text-2xl font-semibold">
+          <h2
+            class="text-xl sm:text-2xl font-semibold"
+            data-translate="verification.pageTitle"
+          >
             Student Account Verification
           </h2>
-          <p class="mt-2 text-slate-600 text-sm">
+          <p
+            class="mt-2 text-slate-600 text-sm"
+            data-translate="verification.description"
+          >
             Simulated check against <code>/check-dbt-status</code>.
           </p>
 
@@ -252,10 +291,10 @@
           `;
           messageDiv.classList.remove("hidden");
 
-          // Show buttons **only if Not linked**
+          // Show buttons only if Not linked
           if (result.dbtStatus === "Not linked") {
             actionButtons.innerHTML = `
-              <a href="./DBT_Guide.pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+              <a href="./dbt_application_guide (2).pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
                 📄 Get DBT Enablement Guide
               </a>
               <a href="https://nccpi.gov.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">

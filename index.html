@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DBT Awareness Dashboard</title>
+    <title data-translate="site.title">DBT Awareness Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <meta
       name="description"
@@ -16,6 +16,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/language-switcher.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -64,16 +65,19 @@
           >
             DBT
           </div>
-          <div class="text-slate-900 font-semibold">DBT Awareness</div>
+          <div class="text-slate-900 font-semibold" data-translate="site.title">DBT Awareness</div>
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="./about.html" class="hover:text-primary-700">About</a>
-          <a href="./login.html" class="hover:text-primary-700">Login</a>
-        </nav>
+    <a href="./about.html" class="hover:text-primary-700" data-translate="nav.about">About</a>
+    <!-- CORRECTED LINE: Added id="nav-login-link" and data-auth="guest" -->
+    <a href="./login.html" class="hover:text-primary-700" data-translate="nav.login" id="nav-login-link" data-auth="guest">Login</a>
+    <button id="logout-button" class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 hidden" data-translate="nav.logout" data-auth="loggedIn">Logout</button>
+</nav>
       </div>
     </header>
 
     <main class="max-w-6xl mx-auto px-4 py-10">
+
       <!-- Hero Section with animated background -->
       <section
         class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-primary-700 via-primary-500 to-primary-400 text-white p-10 md:p-16 text-center shadow-sm min-h-[60vh] grid place-items-center"
@@ -92,10 +96,10 @@
           ></div>
         </div>
         <div class="relative max-w-3xl">
-          <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+          <h2 class="text-4xl md:text-5xl font-extrabold tracking-tight" data-translate="hero.title">
             DBT Awareness Dashboard
           </h2>
-          <p class="mt-4 text-white/90 text-base md:text-lg">
+          <p class="mt-4 text-white/90 text-base md:text-lg" data-translate="hero.subtitle">
             Explore resources, verify accounts, take quizzes, and stay updated —
             all in one place.
           </p>
@@ -103,7 +107,7 @@
             <a
               href="#modules"
               class="inline-flex items-center rounded-lg bg-white text-primary-700 px-4 py-2 font-medium hover:bg-slate-100"
-              >Get Started</a
+              data-translate="hero.getStarted">Get Started</a
             >
 
           </div>
@@ -120,7 +124,7 @@
     class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
   >
     <div class="flex items-center justify-between">
-      <h3 class="font-semibold">Verification</h3>
+      <h3 class="font-semibold" data-translate="modules.verification.title">Verification</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 text-primary-600"
@@ -134,13 +138,13 @@
         />
       </svg>
     </div>
-    <p class="mt-2 text-sm text-slate-600">
+    <p class="mt-2 text-sm text-slate-600" data-translate="modules.verification.description">
       Check if an account looks DBT-ready.
     </p>
     <a
       href="./verification.html"
       class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-      >Go to Page</a
+      data-translate="modules.verification.action">Go to Page</a
     >
   </article>
 
@@ -149,7 +153,7 @@
     class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
   >
     <div class="flex items-center justify-between">
-      <h3 class="font-semibold">Quiz</h3>
+      <h3 class="font-semibold" data-translate="modules.quiz.title">Quiz</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 text-primary-600"
@@ -166,11 +170,11 @@
         />
       </svg>
     </div>
-    <p class="mt-2 text-sm text-slate-600">Test your DBT knowledge.</p>
+    <p class="mt-2 text-sm text-slate-600" data-translate="modules.quiz.description">Test your DBT knowledge.</p>
     <a
       href="./quiz.html"
       class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-      >Go to Page</a
+      data-translate="modules.quiz.action">Go to Page</a
     >
   </article>
 
@@ -179,7 +183,7 @@
   class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
 >
   <div class="flex items-center justify-between">
-    <h3 class="font-semibold">Resources</h3>
+    <h3 class="font-semibold" data-translate="modules.resources.title">Resources</h3>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5 text-primary-600"
@@ -191,11 +195,11 @@
       />
     </svg>
   </div>
-  <p class="mt-2 text-sm text-slate-600">Access guides, PDFs, and tutorials for DBT & scholarships.</p>
+  <p class="mt-2 text-sm text-slate-600" data-translate="modules.resources.description">Access guides, PDFs, and tutorials for DBT & scholarships.</p>
   <a
     href="./resource.html"
     class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-    >Go to Page</a
+    data-translate="modules.resources.action">Go to Page</a
   >
 </article>
 
@@ -205,7 +209,7 @@
     class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
   >
     <div class="flex items-center justify-between">
-      <h3 class="font-semibold">Events & Workshops</h3>
+      <h3 class="font-semibold" data-translate="modules.events.title">Events & Workshops</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 text-primary-600"
@@ -219,13 +223,13 @@
         />
       </svg>
     </div>
-    <p class="mt-2 text-sm text-slate-600">
+    <p class="mt-2 text-sm text-slate-600" data-translate="modules.events.description">
       Upcoming DBT awareness programs and student workshops.
     </p>
     <a
       href="./events.html"
       class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-      >Go to Page</a
+      data-translate="modules.events.action">Go to Page</a
     >
   </article>
 
@@ -234,7 +238,7 @@
     class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
   >
     <div class="flex items-center justify-between">
-      <h3 class="font-semibold">Feedback</h3>
+      <h3 class="font-semibold" data-translate="modules.feedback.title">Feedback</h3>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         class="h-5 w-5 text-primary-600"
@@ -248,20 +252,20 @@
         />
       </svg>
     </div>
-    <p class="mt-2 text-sm text-slate-600">
+    <p class="mt-2 text-sm text-slate-600" data-translate="modules.feedback.description">
       Share your experience or suggestions to improve DBT services.
     </p>
     <a
       href="./feedback.html"
       class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-      >Go to Page</a
+      data-translate="modules.feedback.action">Go to Page</a
     >
   </article>
   <article
   class="rounded-2xl border border-slate-200 p-6 bg-white shadow-sm transition hover:shadow-md hover:-translate-y-0.5"
 >
   <div class="flex items-center justify-between">
-    <h3 class="font-semibold">Help Center</h3>
+    <h3 class="font-semibold" data-translate="modules.help.title">Help Center</h3>
     <svg
       xmlns="http://www.w3.org/2000/svg"
       class="h-5 w-5 text-primary-600"
@@ -275,13 +279,13 @@
       />
     </svg>
   </div>
-  <p class="mt-2 text-sm text-slate-600">
+  <p class="mt-2 text-sm text-slate-600" data-translate="modules.help.description">
     Find answers to common questions and get guidance on DBT-related issues.
   </p>
   <a
     href="./help.html"
     class="mt-4 inline-flex items-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700"
-    >Go to Page</a
+    data-translate="modules.help.action">Go to Page</a
   >
 </article>
 
@@ -294,7 +298,7 @@
           class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm transition hover:shadow-md hover:-translate-y-0.5 animate-glow"
         >
           <div class="text-slate-500 text-sm flex items-center gap-2">
-            <span>👥</span> Students Reached
+            <span>👥</span> <span data-translate="stats.studentsReached">Students Reached</span>
           </div>
           <div class="mt-2 text-3xl font-semibold">
             <span class="countup" data-target="5000">20</span>+
@@ -305,7 +309,7 @@
           style="animation-delay: 0.3s"
         >
           <div class="text-slate-500 text-sm flex items-center gap-2">
-            <span>📣</span> Awareness Campaigns
+            <span>📣</span> <span data-translate="stats.awarenessCampaigns">Awareness Campaigns</span>
           </div>
           <div class="mt-2 text-3xl font-semibold">
             <span class="countup" data-target="120">12</span>
@@ -316,7 +320,7 @@
           style="animation-delay: 0.6s"
         >
           <div class="text-slate-500 text-sm flex items-center gap-2">
-            <span>✅</span> DBT Accounts Verified
+            <span>✅</span> <span data-translate="stats.dbtAccountsVerified">DBT Accounts Verified</span>
           </div>
           <div class="mt-2 text-3xl font-semibold">
             <span class="countup" data-target="3200">10</span>
@@ -328,7 +332,7 @@
       <section
         class="mt-12 rounded-2xl bg-gradient-to-r from-slate-50 to-slate-100 p-8 text-center"
       >
-        <h3 class="text-base font-semibold text-slate-700">
+        <h3 class="text-base font-semibold text-slate-700" data-translate="inspiration.title">
           ✨ Stay Inspired ✨
         </h3>
         <div id="quotes-rotator" class="relative mt-4 max-w-3xl mx-auto">
@@ -338,6 +342,7 @@
           <div
             class="relative italic text-xl md:text-2xl text-slate-800 transition-opacity duration-300"
             id="quotes-text"
+            data-translate="inspiration.quote"
           >
             Believe in yourself, you are capable of amazing things.
           </div>
@@ -354,5 +359,31 @@
           </div>
         </div>
       </section>
+      <script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Check if user is logged in (saved in localStorage)
+    const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+    const loginLink = document.getElementById("nav-login-link");
+    const logoutBtn = document.getElementById("logout-button");
+
+    if (isLoggedIn === "true") {
+      // Show logout, hide login
+      loginLink.classList.add("hidden");
+      logoutBtn.classList.remove("hidden");
+    } else {
+      // Show login, hide logout
+      loginLink.classList.remove("hidden");
+      logoutBtn.classList.add("hidden");
+    }
+
+    // Logout button click → clear login state
+    logoutBtn.addEventListener("click", () => {
+      localStorage.removeItem("isLoggedIn");
+      window.location.href = "./index.html"; // refresh to apply state
+    });
+  });
+</script>
   </body>
 </html>
+

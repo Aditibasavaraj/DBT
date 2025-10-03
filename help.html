@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ScholarConnect — Help & Support</title>
+    <title data-translate="nav.help">ScholarConnect — Help & Support</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,6 +12,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
+    <script src="./js/language-switcher.js"></script>
     <script>
       tailwind.config = {
         theme: {
@@ -34,22 +35,45 @@
           >
             SC
           </div>
-          <h1 class="text-xl sm:text-2xl font-semibold">Help & Support</h1>
+          <h1
+            class="text-xl sm:text-2xl font-semibold"
+            data-translate="nav.help"
+          >
+            Help & Support
+          </h1>
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a
+            href="./index.html"
+            class="hover:text-primary-700"
+            data-translate="nav.home"
+            >Home</a
+          >
           <a href="./awareness.html" class="hover:text-primary-700"
             >Awareness</a
           >
           <a href="./scholarships.html" class="hover:text-primary-700"
             >Scholarships</a
           >
-          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a
+            href="./quiz.html"
+            class="hover:text-primary-700"
+            data-translate="nav.quiz"
+            >Quiz</a
+          >
           <a href="./help.html" class="text-primary-700 font-medium">Help</a>
-          <a href="./admin.html" class="text-slate-700 hover:text-primary-600"
+          <a
+            href="./admin.html"
+            class="text-slate-700 hover:text-primary-600"
+            data-translate="nav.admin"
             >Admin</a
           >
-          <a href="./about.html" class="hover:text-primary-700">About</a>
+          <a
+            href="./about.html"
+            class="hover:text-primary-700"
+            data-translate="nav.about"
+            >About</a
+          >
         </nav>
       </div>
     </header>
