@@ -8,13 +8,11 @@ _A dedicated full-stack web application for demystifying Direct Benefit Transfer
   <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Now!-4CAF50?style=for-the-badge&logo=vercel" alt="Live Demo Button">
 </a>
 
-> A compelling hero image featuring digital interfaces, abstract data flows, and iconography related to information access and financial transfers, set against a backdrop of connectivity and learning. The design should be modern, clean, and use a vibrant, trustworthy color palette (e.g., blues, greens, purples) to convey empowerment through knowledge.
-
 ---
 
 ## About This Project
 
-The DBT Awareness Portal stands as a full-stack web application crafted to enlighten users about the **Direct Benefit Transfer (DBT)** scheme. Its core purpose is to enable simulated Aadhaar-linked account verification and serve as a central hub for essential resources, including scholarship information, event listings, and various STEM initiatives.
+The DBT Awareness Portal stands as a web application crafted to enlighten users about the **Direct Benefit Transfer (DBT)** scheme. Its core purpose is to enable simulated Aadhaar-linked account verification and serve as a central hub for essential resources, including scholarship information, and various event listings.
 
 > **Note:** This is an educational and demonstration project. It does not hold affiliation with any government entity and the verification functionalities are simulated.
 
@@ -24,7 +22,6 @@ Our portal delivers focused functionalities designed for clarity and user engage
 
 - **DBT Verification:** Provides a simulated mechanism to verify if an Aadhaar-linked account is eligible for DBT.
 - **Student Resources:** Offers consolidated access to information regarding scholarships, educational events, and STEM (Science, Technology, Engineering, Mathematics) initiatives.
-- **Notifications & Alerts:** Keeps users informed with timely updates related to DBT and associated benefits.
 - **Interactive Pages:** Features quizzes and educational content to enhance user understanding of DBT.
 
 ## 💻 Tech Stack Powering the Portal
@@ -69,26 +66,37 @@ To set up and run the DBT Awareness Portal locally, follow these steps:
 5.  **Open in Browser:**
     Double-click the `index.html` file in your project directory to open the portal in your default web browser.
 
-## 📂 Project Structure Overview
-
-A clear layout of the project files for straightforward navigation:
-
-```
-├── assets/                 # Images and static files
-├── css/                    # Stylesheets
-├── js/                     # JavaScript functionality
-├── libs/                   # External libraries
-├── index.html              # Home page
-├── login.html              # Login page
-├── signup.html             # Signup page
-├── verification.html       # DBT verification page
-├── scholarships.html       # Scholarship information
-├── events.html             # Event details
-├── quiz.html               # Quiz page
-├── help.html               # Help and FAQ
-├── server.js               # Node.js backend server (optional)
-└── README.md               # Project documentation
-```
+Root
+├─ backend/ # Node.js backend
+│ ├─ dbtData.json # Sample DBT data (simulation)
+│ ├─ server.js # Main Express server
+│ ├─ server2.js # Secondary/optional server
+│ ├─ package.json # Dependencies
+│ └─ package-lock.json # Dependency lock file
+└─ frontend/ # Static site (HTML, CSS, JS)
+├─ assets/ # General assets (logos, icons, misc)
+├─ images/ # Additional images
+├─ css/ # Stylesheets
+├─ js/ # JavaScript functionality
+├─ libs/ # External libraries (e.g., Bootstrap, jQuery)
+├─ index.html # Home page
+├─ login.html # Login page
+├─ signup.html # Signup page
+├─ verification.html # DBT verification page
+├─ scholarships.html # Scholarship information
+├─ events.html # Event details
+├─ quiz.html # Quiz page
+├─ help.html # Help / FAQ
+├─ contact.html # Contact page
+├─ resources.html # Resources page
+├─ feedback.html # Feedback form
+├─ awareness.html # Awareness content
+├─ admin.html # Admin panel
+├─ about.html # About project
+├─ merit.html # Merit scholarship details
+├─ need.html # Need-based scholarship details
+├─ notifications.html # Notifications page
+└─ stem.html # STEM-related scholarships
 
 ## ⚙️ Setup & Development Notes
 
@@ -123,6 +131,11 @@ Contributions are welcome to enhance the DBT Awareness Portal!
 
 ## 📄 License
 
-This project is released under the **MIT License**. Refer to the `LICENSE` file for full details.
+This portal is an **educational prototype**, created to **inform and demonstrate concepts** around Direct Benefit Transfer (DBT) awareness.  
+It does **not represent any official government service**.
+
+- All names, logos, and symbols related to **DBT, Aadhaar, scholarships, or public schemes** remain the property of their respective authorities.
+- Any similarity to official portals is **purely for learning purposes** and should not be considered as endorsement.
+- Use this project responsibly — it is meant for **knowledge, not production deployment**.
 
 ---
