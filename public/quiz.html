@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ScholarConnect — Quiz</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
+        },
+      };
+    </script>
+  </head>
+  <body class="bg-white text-slate-800">
+    <header class="border-b border-slate-200 bg-white/80 sticky top-0 z-40">
+      <div class="container-max px-4 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div
+            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold"
+          >
+            SC
+          </div>
+          <h1 class="text-xl sm:text-2xl font-semibold">Quiz</h1>
+        </div>
+        <nav class="hidden sm:flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./awareness.html" class="hover:text-primary-700"
+            >Awareness</a
+          >
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarships</a
+          >
+          <a href="./quiz.html" class="text-primary-700 font-medium">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700">Help</a>
+          <a href="./admin.html" class="hover:text-primary-700">Admin</a>
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container-max px-4 py-10">
+      <section>
+        <div
+          class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm"
+        >
+          <h2
+            class="text-xl sm:text-2xl font-semibold text-center text-primary-600 mb-6"
+          >
+            Role-Based Quiz
+          </h2>
+
+          <!-- Quiz Cards Container -->
+          <div
+            id="quiz-cards-container"
+            class="grid gap-6 md:grid-cols-2 lg:grid-cols-3"
+          ></div>
+
+          <!-- Submit -->
+          <div class="flex justify-center mt-6">
+            <button
+              id="submit-quiz-btn"
+              class="rounded-lg bg-primary-600 text-white px-6 py-2 font-medium hover:bg-primary-700 transition"
+            >
+              Submit Quiz
+            </button>
+          </div>
+
+          <!-- Result -->
+          <div id="quiz-result" class="mt-4 text-center text-sm"></div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Check if user is logged in
+        const isLoggedIn = localStorage.getItem("isLoggedIn");
+        const userRole = localStorage.getItem("userRole");
+
+        if (!isLoggedIn || !userRole) {
+          alert("Please login first!");
+          window.location.href = "./login.html";
+          return;
+        }
+
+        const quizContainer = document.getElementById("quiz-cards-container");
+        const resultDiv = document.getElementById("quiz-result");
+        const submitBtn = document.getElementById("submit-quiz-btn");
+
+        // Role-based quiz questions
+        const quizzes = {
+          student: [
+            {
+              question: "What is DBT?",
+              options: [
+                "Direct Benefit Transfer",
+                "Digital Banking Tool",
+                "Database Transaction",
+              ],
+              answer: "Direct Benefit Transfer",
+            },
+            {
+              question: "Which ID is mandatory for DBT?",
+              options: ["PAN", "Aadhaar", "Voter ID"],
+              answer: "Aadhaar",
+            },
+            {
+              question: "Where should your bank account be linked?",
+              options: ["With Aadhaar", "With PAN", "With Passport"],
+              answer: "With Aadhaar",
+            },
+            {
+              question: "What happens if your Aadhaar is not seeded?",
+              options: [
+                "You receive benefits",
+                "You won't receive benefits",
+                "Account gets closed",
+              ],
+              answer: "You won't receive benefits",
+            },
+            {
+              question: "Which platform verifies DBT status?",
+              options: ["NPCI/DBT portal", "Google Pay", "PhonePe"],
+              answer: "NPCI/DBT portal",
+            },
+            {
+              question:
+                "Can you update your bank account for DBT after registering?",
+              options: ["Yes", "No"],
+              answer: "Yes",
+            },
+          ],
+          admin: [
+            {
+              question: "Who is responsible for DBT verification?",
+              options: ["Admin", "Student", "Teacher"],
+              answer: "Admin",
+            },
+            {
+              question: "How can you check if a student is DBT-enabled?",
+              options: ["Check Aadhaar seeding", "Ask student", "Check email"],
+              answer: "Check Aadhaar seeding",
+            },
+            {
+              question: "Which data is required for DBT seeding?",
+              options: [
+                "Aadhaar, bank account",
+                "Email, phone number",
+                "Passport, PAN",
+              ],
+              answer: "Aadhaar, bank account",
+            },
+            {
+              question: "What should you do if a user's Aadhaar is incorrect?",
+              options: [
+                "Reject request",
+                "Correct it after verification",
+                "Ignore",
+              ],
+              answer: "Correct it after verification",
+            },
+            {
+              question: "How often should DBT data be updated?",
+              options: ["Weekly", "Monthly", "As needed"],
+              answer: "As needed",
+            },
+            {
+              question:
+                "Which portal is used to seed Aadhaar to bank accounts?",
+              options: [
+                "DBT/NPCI portal",
+                "Income Tax portal",
+                "Bank mobile app",
+              ],
+              answer: "DBT/NPCI portal",
+            },
+          ],
+          other: [
+            {
+              question: "Do you know what DBT stands for?",
+              options: [
+                "Direct Benefit Transfer",
+                "Digital Banking Tool",
+                "Database Transaction",
+              ],
+              answer: "Direct Benefit Transfer",
+            },
+            {
+              question: "Why is Aadhaar linking important for benefits?",
+              options: [
+                "It ensures funds reach you directly",
+                "It helps in social media",
+                "It is optional",
+              ],
+              answer: "It ensures funds reach you directly",
+            },
+            {
+              question: "What is required to update DBT account?",
+              options: [
+                "Aadhaar and new account number",
+                "PAN card only",
+                "Phone number",
+              ],
+              answer: "Aadhaar and new account number",
+            },
+            {
+              question: "Who can verify DBT eligibility?",
+              options: ["Government / Admin", "Friends", "Teachers"],
+              answer: "Government / Admin",
+            },
+            {
+              question: "Can you receive benefits without linking Aadhaar?",
+              options: ["Yes", "No"],
+              answer: "No",
+            },
+            {
+              question: "What should you do if your DBT transaction fails?",
+              options: ["Contact bank/admin", "Do nothing", "Close account"],
+              answer: "Contact bank/admin",
+            },
+          ],
+        };
+
+        const userQuiz = quizzes[userRole] || quizzes["other"];
+
+        // Render quiz cards dynamically
+        userQuiz.forEach((q, index) => {
+          const card = document.createElement("div");
+          card.className =
+            "p-4 border rounded-2xl shadow-sm bg-white hover:shadow-md transition";
+          card.innerHTML = `
+      <h3 class="font-semibold mb-2">Q${index + 1}: ${q.question}</h3>
+      <div class="space-y-2">
+        ${q.options
+          .map(
+            (opt) => `
+          <label class="flex items-center gap-2">
+            <input type="radio" name="q${index}" value="${opt}" class="text-primary-600 focus:ring-primary-500"/>
+            <span>${opt}</span>
+          </label>
+        `
+          )
+          .join("")}
+      </div>
+    `;
+          quizContainer.appendChild(card);
+        });
+
+        // Submit Quiz
+        submitBtn.addEventListener("click", () => {
+          let score = 0;
+          userQuiz.forEach((q, index) => {
+            const selected = document.querySelector(
+              `input[name="q${index}"]:checked`
+            );
+            if (selected && selected.value === q.answer) score++;
+          });
+
+          resultDiv.innerHTML = `<p class="text-green-700 font-medium">${score} / ${userQuiz.length} correct</p>`;
+        });
+      });
+    </script>
+  </body>
+</html>
