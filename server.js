@@ -1,26 +1,20 @@
+// api/server.js
 const express = require("express");
 const cors = require("cors");
-const path = require("path"); // Import the 'path' module
+const serverless = require("serverless-http");
+
 const app = express();
-const PORT = 5000;
+const router = express.Router();
 
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
 
-// --- Serve static files ---
-// This line tells Express to serve files from the current directory (where server.js is)
-// and its subfolders.
-// So, if your server.js is in GITDEMO, then it will serve:
-// - verification.html from /verification.html
-// - DBT/dbt_application_guide.pdf from /DBT/dbt_application_guide.pdf
-app.use(express.static(path.join(__dirname, '/'))); // Serve current directory as static files
-
 // --- Sample DBT Accounts Data ---
 const dbtAccounts = {
   "123412341234": { account: "111122223333", bank: "State Bank of India" },
   "987698769876": { account: "444455556666", bank: "HDFC Bank" },
-  "111122223333": { account: "777788889999", bank: "ICICI Bank" }, // Added third account
+  "111122223333": { account: "777788889999", bank: "ICICI Bank" }
 };
 
 // --- Sample Users Data ---
@@ -38,15 +32,13 @@ const scholarships = [
 
 // ---------------- ROUTES ----------------
 
-// 1. Scholarships endpoint
-app.get("/scholarships", (req, res) => res.json(scholarships));
+// Scholarships endpoint
+router.get("/scholarships", (req, res) => res.json(scholarships));
 
-// 2. Login endpoint
-app.post("/login", (req, res) => {
+// Login endpoint
+router.post("/login", (req, res) => {
   const { email, password } = req.body;
-  if (!email || !password) {
-    return res.status(400).json({ status: "error", message: "Email and password are required" });
-  }
+  if (!email || !password) return res.status(400).json({ status: "error", message: "Email and password are required" });
 
   const user = users.find(u => u.email === email && u.password === password);
   if (user) {
@@ -57,17 +49,12 @@ app.post("/login", (req, res) => {
   }
 });
 
-// 3. DBT Verification endpoint
-app.post("/check-dbt-status", (req, res) => {
+// DBT Verification endpoint
+router.post("/check-dbt-status", (req, res) => {
   const { name, aadhaar, account, bank, userId } = req.body;
 
-  if (!userId) {
-    return res.status(401).json({ status: "error", message: "Authentication required: userId is missing" });
-  }
-
-  if (!name || !aadhaar || !account) {
-    return res.status(400).json({ status: "error", message: "Name, Aadhaar, and Account Number are required" });
-  }
+  if (!userId) return res.status(401).json({ status: "error", message: "Authentication required: userId is missing" });
+  if (!name || !aadhaar || !account) return res.status(400).json({ status: "error", message: "Name, Aadhaar, and Account Number are required" });
 
   const userDbtInfo = dbtAccounts[aadhaar];
 
@@ -107,18 +94,13 @@ app.post("/check-dbt-status", (req, res) => {
   }
 });
 
-// 4. Optional: Register endpoint
-app.post("/register", (req, res) => {
+// Optional Register endpoint
+router.post("/register", (req, res) => {
   const { name, email, password } = req.body;
-
-  if (!name || !email || !password) {
-    return res.status(400).json({ status: "error", message: "All fields are required" });
-  }
+  if (!name || !email || !password) return res.status(400).json({ status: "error", message: "All fields are required" });
 
   const exists = users.find(u => u.email === email);
-  if (exists) {
-    return res.status(409).json({ status: "error", message: "User already exists" });
-  }
+  if (exists) return res.status(409).json({ status: "error", message: "User already exists" });
 
   const newUser = { id: users.length + 1, name, email, password, role: "student", level: "beginner" };
   users.push(newUser);
@@ -127,5 +109,8 @@ app.post("/register", (req, res) => {
   return res.json({ status: "success", message: "Registration successful", user: userWithoutPassword });
 });
 
-// --- Start the server ---
-app.listen(PORT, () => console.log(`Server running at http://localhost:${PORT}`));
+// Attach router to /api prefix
+app.use("/api", router);
+
+// Export serverless handler
+module.exports.handler = serverless(app);
