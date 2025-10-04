@@ -4,7 +4,7 @@ _A dedicated full-stack web application for demystifying Direct Benefit Transfer
 
 <br/>
 
-<a href="https://dbt-1vcw-cbbauocgp-aditibasavarajs-projects.vercel.app" target="_blank">
+<a href="https://dbt-jp92.vercel.app/" target="_blank">
   <img src="https://img.shields.io/badge/Live%20Demo-Visit%20Now!-4CAF50?style=for-the-badge&logo=vercel" alt="Live Demo Button">
 </a>
 
