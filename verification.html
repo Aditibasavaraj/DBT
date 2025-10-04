@@ -242,6 +242,7 @@
     </main>
 
     <!-- JS -->
+    <!-- JS -->
     <script>
       const form = document.getElementById("verification-form");
       const verifyBtn = document.getElementById("verify-btn");
@@ -262,58 +263,101 @@
         spinner.classList.remove("hidden");
 
         const data = {
-          name: form.name.value.trim(),
+          // The new backend /api/verify only needs aadhaar and accountNumber
+          // 'name' and 'bank' are not directly used by this specific API, but you can keep them in the form for future expansion
           aadhaar: form.aadhaar.value.trim(),
-          account: form.account.value.trim(),
-          bank: form.bank.value.trim(),
+          accountNumber: form.account.value.trim(), // Use 'accountNumber' to match backend schema
+          name: form.name.value.trim(), // Kept for display purposes
+          bank: form.bank.value.trim(), // Kept for display purposes
         };
 
+        // Basic client-side validation for Aadhaar and Account Number
+        if (
+          !data.aadhaar ||
+          data.aadhaar.length !== 12 ||
+          !/^\d{12}$/.test(data.aadhaar)
+        ) {
+          messageDiv.className =
+            "mt-4 rounded-lg p-4 border border-red-400 bg-red-100 text-red-800";
+          messageDiv.innerHTML = `❌ Please enter a valid 12-digit Aadhaar number.`;
+          messageDiv.classList.remove("hidden");
+          verifyBtn.disabled = false;
+          spinner.classList.add("hidden");
+          return;
+        }
+        if (!data.accountNumber) {
+          messageDiv.className =
+            "mt-4 rounded-lg p-4 border border-red-400 bg-red-100 text-red-800";
+          messageDiv.innerHTML = `❌ Please enter an Account Number.`;
+          messageDiv.classList.remove("hidden");
+          verifyBtn.disabled = false;
+          spinner.classList.add("hidden");
+          return;
+        }
+
         try {
-          const res = await fetch("http://localhost:5000/check-dbt-status", {
+          // --- UPDATED FETCH URL TO /api/verify ---
+          const res = await fetch("http://localhost:5000/api/verify", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(data),
+            // Only send what the backend /api/verify endpoint expects
+            body: JSON.stringify({
+              aadhaar: data.aadhaar,
+              accountNumber: data.accountNumber,
+            }),
           });
 
-          const result = await res.json();
+          const result = await res.json(); // Backend response will have { status: "Eligible" } or { status: "Not Eligible" }
 
-          let color = "yellow";
-          if (result.dbtStatus === "DBT-enabled") color = "green";
-          else if (result.dbtStatus === "Not linked") color = "red";
+          let color = "red"; // Default to red for not eligible or error
+          let statusMessage = "❌ Not Eligible";
+
+          // --- ADJUSTED RESULT PROCESSING FOR NEW BACKEND RESPONSE ---
+          if (result.status === "Eligible") {
+            color = "green";
+            statusMessage = "✅ DBT Eligible";
+          } else if (result.status === "Not Eligible") {
+            color = "red";
+            statusMessage = "❌ Not Eligible";
+          } else if (result.status === "Error") {
+            color = "red";
+            statusMessage = "❌ Verification Error";
+          }
 
           messageDiv.className = `mt-4 rounded-lg p-4 border bg-${color}-100 text-${color}-800`;
           messageDiv.innerHTML = `
-            <p>${result.message}</p>
-            <p><strong>Name:</strong> ${data.name}</p>
+            <p>${result.message || "Unknown status message."}</p>
             <p><strong>Aadhaar:</strong> ${data.aadhaar}</p>
-            <p><strong>Account:</strong> ${data.account}</p>
+            <p><strong>Account:</strong> ${data.accountNumber}</p>
+            ${data.name ? `<p><strong>Name:</strong> ${data.name}</p>` : ""}
             ${data.bank ? `<p><strong>Bank:</strong> ${data.bank}</p>` : ""}
           `;
           messageDiv.classList.remove("hidden");
 
-          // Show buttons only if Not linked
-          if (result.dbtStatus === "Not linked") {
+          // Show action buttons only if Not Eligible from the new backend
+          if (result.status === "Not Eligible") {
             actionButtons.innerHTML = `
-              <a href="./dbt_application_guide (2).pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+             <a href="/DBT/dbt_application_guide (2).pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
                 📄 Get DBT Enablement Guide
-              </a>
-              <a href="https://nccpi.gov.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">
-                🌐 Go to NCCPI Portal
+             </a>
+              <a href="https://www.npci.org.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">
+                🌐 Go to NPCI Portal
               </a>
             `;
             actionButtons.classList.remove("hidden");
           }
 
           // Update session history
-          history.unshift(result.message);
+          history.unshift(result.message || statusMessage); // Use message from backend or generic status
           historyList.innerHTML = history
             .map((msg) => `<li>${msg}</li>`)
             .join("");
           historyContainer.classList.remove("hidden");
         } catch (err) {
+          console.error("Error during DBT verification:", err);
           messageDiv.className =
             "mt-4 rounded-lg p-4 border border-red-400 bg-red-100 text-red-800";
-          messageDiv.innerHTML = `❌ Error checking DBT status: ${err.message}`;
+          messageDiv.innerHTML = `❌ Network error or server not responding. Please ensure the backend is running. Error: ${err.message}`;
           messageDiv.classList.remove("hidden");
         } finally {
           verifyBtn.disabled = false;

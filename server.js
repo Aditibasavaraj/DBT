@@ -1,12 +1,20 @@
-// server.js
 const express = require("express");
 const cors = require("cors");
+const path = require("path"); // Import the 'path' module
 const app = express();
 const PORT = 5000;
 
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
+
+// --- Serve static files ---
+// This line tells Express to serve files from the current directory (where server.js is)
+// and its subfolders.
+// So, if your server.js is in GITDEMO, then it will serve:
+// - verification.html from /verification.html
+// - DBT/dbt_application_guide.pdf from /DBT/dbt_application_guide.pdf
+app.use(express.static(path.join(__dirname, '/'))); // Serve current directory as static files
 
 // --- Sample DBT Accounts Data ---
 const dbtAccounts = {

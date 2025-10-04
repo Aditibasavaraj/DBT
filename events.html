@@ -3,9 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-translate="nav.events">
-      ScholarConnect — Events & Workshops
-    </title>
+    <title>ScholarConnect — Events & Workshops</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -42,42 +40,17 @@
           </div>
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a
-            href="./index.html"
-            class="hover:text-primary-700"
-            data-translate="nav.home"
-            >Home</a
-          >
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
           <a href="./awareness.html" class="hover:text-primary-700"
             >Awareness</a
           >
           <a href="./scholarships.html" class="hover:text-primary-700"
             >Scholarships</a
           >
-          <a
-            href="./quiz.html"
-            class="hover:text-primary-700"
-            data-translate="nav.quiz"
-            >Quiz</a
-          >
-          <a
-            href="./help.html"
-            class="hover:text-primary-700"
-            data-translate="nav.help"
-            >Help</a
-          >
-          <a
-            href="./about.html"
-            class="hover:text-primary-700"
-            data-translate="nav.about"
-            >About</a
-          >
-          <a
-            href="./feedback.html"
-            class="hover:text-primary-700"
-            data-translate="nav.feedback"
-            >Feedback</a
-          >
+          <a href="./quiz.html" class="hover:text-primary-700">Quiz</a>
+          <a href="./help.html" class="hover:text-primary-700">Help</a>
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+          <a href="./feedback.html" class="hover:text-primary-700">Feedback</a>
         </nav>
       </div>
     </header>
@@ -90,7 +63,7 @@
           Upcoming Events
         </h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          <!-- Event Card -->
+          <!-- Event Card 1 -->
           <div
             class="border p-5 rounded-2xl shadow-sm hover:shadow-md transition"
           >
@@ -101,12 +74,15 @@
             <p class="mt-2 text-gray-700">
               Learn how to verify your Aadhaar-bank linkage effectively.
             </p>
-            <a
-              href="#"
+            <button
+              onclick="openModal('dbtWebinarModal')"
               class="mt-3 inline-block bg-primary-600 text-white px-3 py-1.5 rounded hover:bg-primary-700"
-              >Register</a
             >
+              Register
+            </button>
           </div>
+
+          <!-- Event Card 2 -->
           <div
             class="border p-5 rounded-2xl shadow-sm hover:shadow-md transition"
           >
@@ -117,12 +93,15 @@
             <p class="mt-2 text-gray-700">
               Interactive session on finding scholarships for students.
             </p>
-            <a
-              href="#"
+            <button
+              onclick="openModal('scholarshipModal')"
               class="mt-3 inline-block bg-primary-600 text-white px-3 py-1.5 rounded hover:bg-primary-700"
-              >Register</a
             >
+              Register
+            </button>
           </div>
+
+          <!-- Event Card 3 -->
           <div
             class="border p-5 rounded-2xl shadow-sm hover:shadow-md transition"
           >
@@ -133,11 +112,12 @@
             <p class="mt-2 text-gray-700">
               Hands-on training to verify DBT-enabled bank accounts.
             </p>
-            <a
-              href="#"
+            <button
+              onclick="openModal('dbtVerificationModal')"
               class="mt-3 inline-block bg-primary-600 text-white px-3 py-1.5 rounded hover:bg-primary-700"
-              >Register</a
             >
+              Register
+            </button>
           </div>
         </div>
       </section>
@@ -148,6 +128,7 @@
           Past Events
         </h2>
         <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <!-- Past Event Card 1 -->
           <div
             class="border p-5 rounded-2xl shadow-sm hover:shadow-md transition"
           >
@@ -159,12 +140,15 @@
               Camp conducted in local colleges to educate students on DBT
               verification.
             </p>
-            <a
-              href="#"
+            <button
+              onclick="openModal('photosModal')"
               class="mt-3 inline-block bg-primary-600 text-white px-3 py-1.5 rounded hover:bg-primary-700"
-              >View Photos</a
             >
+              View Photos
+            </button>
           </div>
+
+          <!-- Past Event Card 2 -->
           <div
             class="border p-5 rounded-2xl shadow-sm hover:shadow-md transition"
           >
@@ -175,11 +159,12 @@
             <p class="mt-2 text-gray-700">
               Session on how to search and apply for government scholarships.
             </p>
-            <a
-              href="#"
+            <button
+              onclick="openModal('recordingModal')"
               class="mt-3 inline-block bg-primary-600 text-white px-3 py-1.5 rounded hover:bg-primary-700"
-              >View Recording</a
             >
+              View Recording
+            </button>
           </div>
         </div>
       </section>
@@ -212,5 +197,213 @@
         </div>
       </section>
     </main>
+
+    <!-- Modals -->
+    <!-- DBT Webinar Modal -->
+    <div
+      id="dbtWebinarModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+        <h2 class="text-lg font-semibold">
+          DBT Awareness Webinar Registration
+        </h2>
+        <form
+          class="mt-4 space-y-2"
+          onsubmit="handleSubmit(event, 'dbtWebinarModal')"
+        >
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+          >
+            Submit
+          </button>
+        </form>
+        <p class="mt-2 text-green-600 font-medium hidden">
+          Thank you! Your registration is submitted.
+        </p>
+        <button
+          onclick="closeModal('dbtWebinarModal')"
+          class="mt-4 text-sm text-gray-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Scholarship Modal -->
+    <div
+      id="scholarshipModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+        <h2 class="text-lg font-semibold">Scholarship Workshop Registration</h2>
+        <form
+          class="mt-4 space-y-2"
+          onsubmit="handleSubmit(event, 'scholarshipModal')"
+        >
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+          >
+            Submit
+          </button>
+        </form>
+        <p class="mt-2 text-green-600 font-medium hidden">
+          Thank you! Your registration is submitted.
+        </p>
+        <button
+          onclick="closeModal('scholarshipModal')"
+          class="mt-4 text-sm text-gray-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- DBT Verification Modal -->
+    <div
+      id="dbtVerificationModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-md w-full mx-4">
+        <h2 class="text-lg font-semibold">
+          DBT Verification Workshop Registration
+        </h2>
+        <form
+          class="mt-4 space-y-2"
+          onsubmit="handleSubmit(event, 'dbtVerificationModal')"
+        >
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full border p-2 rounded"
+            required
+          />
+          <button
+            type="submit"
+            class="bg-primary-600 text-white px-4 py-2 rounded hover:bg-primary-700"
+          >
+            Submit
+          </button>
+        </form>
+        <p class="mt-2 text-green-600 font-medium hidden">
+          Thank you! Your registration is submitted.
+        </p>
+        <button
+          onclick="closeModal('dbtVerificationModal')"
+          class="mt-4 text-sm text-gray-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Photos Modal -->
+    <div
+      id="photosModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-3xl w-full mx-4 overflow-auto">
+        <h2 class="text-lg font-semibold">DBT Awareness Camp Photos</h2>
+        <div class="grid grid-cols-3 gap-2 mt-4">
+          <img src="./assets/images/photo1.jpg" class="rounded-lg" />
+          <img src="./assets/images/photo2.jpg" class="rounded-lg" />
+          <img src="./assets/images/photo3.jpg" class="rounded-lg" />
+        </div>
+        <button
+          onclick="closeModal('photosModal')"
+          class="mt-4 text-sm text-gray-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Recording Modal -->
+    <div
+      id="recordingModal"
+      class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50"
+    >
+      <div class="bg-white p-6 rounded-lg max-w-3xl w-full mx-4 overflow-auto">
+        <h2 class="text-lg font-semibold">
+          Scholarship Awareness Seminar Recording
+        </h2>
+        <div class="mt-4">
+          <iframe
+            width="100%"
+            height="400"
+            src="https://www.youtube.com/embed/VIDEO_ID"
+            frameborder="0"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <button
+          onclick="closeModal('recordingModal')"
+          class="mt-4 text-sm text-gray-500"
+        >
+          Close
+        </button>
+      </div>
+    </div>
+
+    <!-- Modal Script -->
+    <script>
+      function openModal(id) {
+        document.getElementById(id).classList.remove("hidden");
+        document.getElementById(id).classList.add("flex");
+      }
+      function closeModal(id) {
+        const modal = document.getElementById(id);
+        modal.classList.add("hidden");
+        modal.classList.remove("flex");
+        // Reset form and thank you message
+        const form = modal.querySelector("form");
+        if (form) {
+          form.style.display = "block";
+          form.reset();
+        }
+        const thankMsg = modal.querySelector("p.text-green-600");
+        if (thankMsg) thankMsg.classList.add("hidden");
+      }
+
+      function handleSubmit(e, modalId) {
+        e.preventDefault();
+        const modal = document.getElementById(modalId);
+        const thankMsg = modal.querySelector("p.text-green-600");
+        thankMsg.classList.remove("hidden");
+        e.target.style.display = "none";
+      }
+    </script>
   </body>
 </html>
