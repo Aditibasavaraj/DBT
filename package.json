@@ -6,7 +6,7 @@
   "type": "commonjs",
   "scripts": {
     "dev": "nodemon api/server.js",
-    "start": "node api/server.js"
+    "build": "echo 'skip build for serverless deployment'"
   },
   "dependencies": {
     "express": "^5.1.0",
