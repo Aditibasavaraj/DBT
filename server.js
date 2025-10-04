@@ -1,8 +1,12 @@
 // server.js
 const express = require("express");
 const cors = require("cors");
+const path = require("path");  // add this after other require statements
+
 const app = express();
 const PORT = 5000;
+app.use(express.static(path.join(__dirname)));  // <-- new line
+
 
 // --- Middleware ---
 app.use(cors());
