@@ -63,20 +63,27 @@
         <div class="text-xl font-semibold text-primary-700">
           DBT Admin Dashboard
         </div>
-        <nav class="flex items-center gap-6">
-          <a href="./index.html" class="text-slate-700 hover:text-primary-600"
-            >Home</a
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarship</a
           >
-          <a
-            href="#"
-            class="text-slate-700 hover:text-primary-600"
-            onclick="logout()"
-            >Logout</a
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+          <a href="./awareness.html" class="hover:text-primary-700"
+            >Awareness</a
           >
+          <a href="./contact.html" class="hover:text-primary-700">Contact</a>
+
+          <!-- Logout Button -->
+          <button
+            id="logout-button"
+            class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 hidden"
+          >
+            Logout
+          </button>
         </nav>
       </div>
     </header>
-
     <main class="max-w-7xl mx-auto p-6">
       <!-- Quick Stats -->
       <section
@@ -333,6 +340,54 @@
         localStorage.clear();
         window.location.href = "./login.html";
       }
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const logoutBtn = document.getElementById("logout-button");
+        const loginLink = document.getElementById("nav-login-link");
+
+        // Redirect to login page if user is not logged in
+        if (localStorage.getItem("isLoggedIn") !== "true") {
+          window.location.href = "./login.html";
+        } else {
+          // Show logout button, hide login link
+          logoutBtn.classList.remove("hidden");
+          loginLink.classList.add("hidden");
+        }
+
+        // Logout action
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("userLevel");
+          alert("Logged out successfully!");
+          window.location.href = "./login.html";
+        });
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const logoutBtn = document.getElementById("logout-button");
+
+        // Show logout button only if user is logged in
+        if (localStorage.getItem("isLoggedIn") === "true") {
+          logoutBtn.classList.remove("hidden");
+        } else {
+          // If user is not logged in, redirect to login page
+          window.location.href = "./login.html";
+        }
+
+        // Logout action
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("userLevel");
+          alert("Logged out successfully!");
+          window.location.href = "./login.html";
+        });
+      });
     </script>
   </body>
 </html>

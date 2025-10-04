@@ -58,68 +58,19 @@
           </div>
           <h1 class="text-xl sm:text-2xl font-semibold">DBT Awareness</h1>
         </div>
-        <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a
-            href="./index.html"
-            class="hover:text-primary-700"
-            data-translate="nav.home"
-            >Home</a
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarship</a
           >
-          <a
-            href="./understanding-dbt.html"
-            class="text-primary-700 font-medium"
-            data-translate="nav.understandingDbt"
-            >Understanding DBT</a
-          >
-          <a
-            href="./activation-guide.html"
-            class="hover:text-primary-700"
-            data-translate="nav.activationGuide"
-            >Activation Guide</a
-          >
-          <a
-            href="./verification.html"
-            class="hover:text-primary-700"
-            data-translate="nav.verification"
-            >Verification</a
-          >
-          <a
-            href="./quiz.html"
-            class="hover:text-primary-700"
-            data-translate="nav.quiz"
-            >Quiz</a
-          >
-          <a
-            href="./resources.html"
-            class="hover:text-primary-700"
-            data-translate="nav.resources"
-            >Resources</a
-          >
-          <a
-            href="./faq.html"
-            class="hover:text-primary-700"
-            data-translate="nav.faq"
-            >FAQ</a
-          >
-          <a
-            href="./about.html"
-            class="hover:text-primary-700"
-            data-translate="nav.about"
-            >About</a
-          >
-          <a
-            href="./login.html"
-            class="hover:text-primary-700"
-            data-translate="nav.login"
-            id="nav-login-link"
-            data-auth="guest"
-            >Login</a
-          >
+          <a href="./about.html" class="hover:text-primary-700">About</a>
+          <a href="./contact.html" class="hover:text-primary-700">Contact</a>
+          <a href="./admin.html" class="hover:text-primary-700">Admin</a>
+
+          <!-- Logout Button -->
           <button
             id="logout-button"
             class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 hidden"
-            data-translate="nav.logout"
-            data-auth="loggedIn"
           >
             Logout
           </button>
@@ -146,92 +97,135 @@
       </p>
 
       <!-- Side-by-Side Comparison -->
-<section class="mb-12">
-  <h2 class="text-2xl font-semibold mb-6 text-primary-700">
-    The Key Difference: Aadhaar-linked vs. DBT-enabled
-  </h2>
-  <div class="grid gap-8 md:grid-cols-2">
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6 text-primary-700">
+          The Key Difference: Aadhaar-linked vs. DBT-enabled
+        </h2>
+        <div class="grid gap-8 md:grid-cols-2">
+          <!-- Aadhaar-linked account -->
+          <div
+            class="bg-primary-50 rounded-xl p-6 border border-primary-200 shadow-sm"
+          >
+            <h3 class="text-xl font-bold text-primary-800 mb-3">
+              Aadhaar-Linked Bank Account
+              <span class="text-red-500 text-sm"
+                >(NOT enough for benefits)</span
+              >
+            </h3>
 
-    <!-- Aadhaar-linked account -->
-    <div class="bg-primary-50 rounded-xl p-6 border border-primary-200 shadow-sm">
-      <h3 class="text-xl font-bold text-primary-800 mb-3">
-        Aadhaar-Linked Bank Account
-        <span class="text-red-500 text-sm">(NOT enough for benefits)</span>
-      </h3>
+            <div class="flex items-center justify-center mb-4 gap-4">
+              <div
+                class="px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg border border-red-300 shadow-sm text-center"
+              >
+                Aadhaar ID
+              </div>
+              <div class="text-red-500 font-bold text-2xl">✖</div>
+              <div
+                class="px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg border border-red-300 shadow-sm text-center"
+              >
+                Bank Account
+              </div>
+            </div>
 
-      <div class="flex items-center justify-center mb-4 gap-4">
-        <div class="px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg border border-red-300 shadow-sm text-center">
-          Aadhaar ID
+            <ul class="list-disc pl-5 text-slate-700 space-y-2">
+              <li>
+                Your Aadhaar number is simply attached to your bank account for
+                identification (eKYC).
+              </li>
+              <li>
+                It does <strong>not</strong> automatically enable your account
+                to receive government subsidies or scholarships.
+              </li>
+              <li>
+                It's primarily an identity linkage, not a financial transaction
+                channel.
+              </li>
+            </ul>
+          </div>
+
+          <!-- DBT-enabled Aadhaar-seeded bank account -->
+          <div
+            class="bg-green-50 rounded-xl p-6 border border-green-200 shadow-sm"
+          >
+            <h3 class="text-xl font-bold text-green-800 mb-3">
+              DBT-Enabled Aadhaar-Seeded Bank Account
+              <span class="text-green-600 text-sm"
+                >(REQUIRED for benefits)</span
+              >
+            </h3>
+
+            <div class="flex items-center justify-center mb-4 gap-4">
+              <div
+                class="px-4 py-2 bg-green-100 text-green-700 font-semibold rounded-lg border border-green-300 shadow-sm text-center"
+              >
+                Aadhaar ID
+              </div>
+              <div class="text-green-500 font-bold text-2xl">✔</div>
+              <div
+                class="px-4 py-2 bg-green-100 text-green-700 font-semibold rounded-lg border border-green-300 shadow-sm text-center"
+              >
+                Bank Account
+              </div>
+            </div>
+
+            <ul class="list-disc pl-5 text-slate-700 space-y-2">
+              <li>
+                Your Aadhaar is not only linked but also designated and
+                activated to receive Direct Benefit Transfer (DBT).
+              </li>
+              <li>
+                Government subsidies, scholarships, pensions, etc., will go
+                directly into this account.
+              </li>
+              <li>
+                It requires seeding and activation in the NPCI (National
+                Payments Corporation of India) mapper.
+              </li>
+              <li>
+                Only one account at a time can be your DBT-enabled account to
+                receive government benefits.
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="text-red-500 font-bold text-2xl">✖</div>
-        <div class="px-4 py-2 bg-red-100 text-red-700 font-semibold rounded-lg border border-red-300 shadow-sm text-center">
-          Bank Account
+      </section>
+
+      <!-- Simple Flow Diagram (Text-based) -->
+      <section class="mb-12">
+        <h2 class="text-2xl font-semibold mb-6 text-primary-700">
+          Understanding the Flow
+        </h2>
+        <div
+          class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-center text-sm"
+        >
+          <div class="flex flex-col items-center">
+            <div
+              class="bg-red-100 border border-red-300 rounded-lg p-4 font-bold text-red-700 shadow-md"
+            >
+              Aadhaar Linked Account
+            </div>
+            <div class="text-red-500 font-bold text-2xl my-2">✖</div>
+            <p class="text-red-600 font-medium">NOT enough for benefits</p>
+          </div>
+
+          <div class="hidden md:block">
+            <div class="text-slate-400 font-bold text-2xl">→</div>
+          </div>
+          <div class="block md:hidden">
+            <div class="text-slate-400 font-bold text-2xl rotate-90">→</div>
+          </div>
+
+          <div class="flex flex-col items-center">
+            <div
+              class="bg-green-100 border border-green-300 rounded-lg p-4 font-bold text-green-700 shadow-md"
+            >
+              DBT-Enabled Aadhaar Account
+            </div>
+            <div class="text-green-500 font-bold text-2xl my-2">✔</div>
+            <p class="text-green-600 font-medium">✅ Benefits Credited!</p>
+          </div>
         </div>
-      </div>
-
-      <ul class="list-disc pl-5 text-slate-700 space-y-2">
-        <li>Your Aadhaar number is simply attached to your bank account for identification (eKYC).</li>
-        <li>It does <strong>not</strong> automatically enable your account to receive government subsidies or scholarships.</li>
-        <li>It's primarily an identity linkage, not a financial transaction channel.</li>
-      </ul>
-    </div>
-
-    <!-- DBT-enabled Aadhaar-seeded bank account -->
-    <div class="bg-green-50 rounded-xl p-6 border border-green-200 shadow-sm">
-      <h3 class="text-xl font-bold text-green-800 mb-3">
-        DBT-Enabled Aadhaar-Seeded Bank Account
-        <span class="text-green-600 text-sm">(REQUIRED for benefits)</span>
-      </h3>
-
-      <div class="flex items-center justify-center mb-4 gap-4">
-        <div class="px-4 py-2 bg-green-100 text-green-700 font-semibold rounded-lg border border-green-300 shadow-sm text-center">
-          Aadhaar ID
-        </div>
-        <div class="text-green-500 font-bold text-2xl">✔</div>
-        <div class="px-4 py-2 bg-green-100 text-green-700 font-semibold rounded-lg border border-green-300 shadow-sm text-center">
-          Bank Account
-        </div>
-      </div>
-
-      <ul class="list-disc pl-5 text-slate-700 space-y-2">
-        <li>Your Aadhaar is not only linked but also designated and activated to receive Direct Benefit Transfer (DBT).</li>
-        <li>Government subsidies, scholarships, pensions, etc., will go directly into this account.</li>
-        <li>It requires seeding and activation in the NPCI (National Payments Corporation of India) mapper.</li>
-        <li>Only one account at a time can be your DBT-enabled account to receive government benefits.</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- Simple Flow Diagram (Text-based) -->
-<section class="mb-12">
-  <h2 class="text-2xl font-semibold mb-6 text-primary-700">Understanding the Flow</h2>
-  <div class="flex flex-col md:flex-row items-center justify-center space-y-4 md:space-y-0 md:space-x-8 text-center text-sm">
-
-    <div class="flex flex-col items-center">
-      <div class="bg-red-100 border border-red-300 rounded-lg p-4 font-bold text-red-700 shadow-md">
-        Aadhaar Linked Account
-      </div>
-      <div class="text-red-500 font-bold text-2xl my-2">✖</div>
-      <p class="text-red-600 font-medium">NOT enough for benefits</p>
-    </div>
-
-    <div class="hidden md:block">
-      <div class="text-slate-400 font-bold text-2xl">→</div>
-    </div>
-    <div class="block md:hidden">
-      <div class="text-slate-400 font-bold text-2xl rotate-90">→</div>
-    </div>
-
-    <div class="flex flex-col items-center">
-      <div class="bg-green-100 border border-green-300 rounded-lg p-4 font-bold text-green-700 shadow-md">
-        DBT-Enabled Aadhaar Account
-      </div>
-      <div class="text-green-500 font-bold text-2xl my-2">✔</div>
-      <p class="text-green-600 font-medium">✅ Benefits Credited!</p>
-    </div>
-  </div>
-</section>
+      </section>
       <!-- Why This Matters for Students -->
       <section
         class="mb-12 bg-blue-50 rounded-xl p-6 border border-blue-200 shadow-sm"
@@ -244,33 +238,34 @@
         </h2>
         <ul class="list-disc pl-5 text-slate-700 space-y-3">
           <li data-translate="understandingDbt.whyMattersPoint1">
-            **Scholarship Discrepancies:** Many students miss out on critical
+            <b>Scholarship Discrepancies:</b> Many students miss out on critical
             scholarships, stipends, or government benefits because their account
             is only Aadhaar-linked, not DBT-enabled. The money gets stuck or
             returned.
           </li>
           <li data-translate="understandingDbt.whyMattersPoint2">
-            **Direct & Secure Transfers:** DBT ensures that funds reach the
+            <b>Direct & Secure Transfers:</b> DBT ensures that funds reach the
             intended beneficiary without intermediaries, reducing delays and
             leakage. But for this to work, your account must be correctly
             mapped.
           </li>
           <li data-translate="understandingDbt.whyMattersPoint3">
-            **NPCI Mapper is Key:** The National Payments Corporation of India
-            (NPCI) maintains a mapper that links your Aadhaar number to your
-            primary DBT-enabled bank account. Government agencies refer to this
-            mapper to credit funds. If your account isn't correctly seeded and
-            active in this mapper, you won't receive benefits.
+            <b>NPCI Mapper is Key:</b> The National Payments Corporation of
+            India (NPCI) maintains a mapper that links your Aadhaar number to
+            your primary DBT-enabled bank account. Government agencies refer to
+            this mapper to credit funds. If your account isn't correctly seeded
+            and active in this mapper, you won't receive benefits.
           </li>
         </ul>
         <div class="mt-6 text-center">
           <div class="mt-6 text-center">
-            <button
-              onclick="generatePDF()"
-              class="inline-flex items-center rounded-lg bg-primary-600 text-white px-5 py-2.5 text-lg font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
+            <a
+              href="/DBT_Awareness.pdf"
+              target="_blank"
+              class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500"
             >
-              📄 Download DBT Flow as PDF
-            </button>
+              📄 Get DBT Enablement Guide
+            </a>
           </div>
         </div>
       </section>
@@ -434,31 +429,28 @@
     </script>
     <!-- jsPDF CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-
     <script>
-      function generatePDF() {
-        const { jsPDF } = window.jspdf;
-        const doc = new jsPDF();
+      document.addEventListener("DOMContentLoaded", () => {
+        const logoutBtn = document.getElementById("logout-button");
 
-        doc.setFont("helvetica", "bold");
-        doc.setFontSize(18);
-        doc.text("Understanding Aadhaar Linking vs DBT", 20, 20);
+        // Show logout button only if user is logged in
+        if (localStorage.getItem("isLoggedIn") === "true") {
+          logoutBtn.classList.remove("hidden");
+        } else {
+          // If user is not logged in, redirect to login page
+          window.location.href = "./login.html";
+        }
 
-        doc.setFont("helvetica", "normal");
-        doc.setFontSize(12);
-        doc.text("Aadhaar Linked Account → ❌ NOT Enough", 20, 50);
-        doc.text("DBT-Enabled Aadhaar Account → ✅ Benefits Credited", 20, 70);
-
-        doc.setFont("helvetica", "italic");
-        doc.text(
-          "Note: Only DBT-enabled accounts (seeded in NPCI mapper) receive scholarships, subsidies, and government benefits.",
-          20,
-          100,
-          { maxWidth: 170 }
-        );
-
-        doc.save("DBT_Flow_Guide.pdf");
-      }
+        // Logout action
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("userLevel");
+          alert("Logged out successfully!");
+          window.location.href = "./login.html";
+        });
+      });
     </script>
   </body>
 </html>

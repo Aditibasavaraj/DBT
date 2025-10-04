@@ -42,49 +42,24 @@
             </h1>
           </div>
         </div>
-        <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a
-            href="./index.html"
-            class="hover:text-primary-700"
-            data-translate="nav.home"
-            >Home</a
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="./index.html" class="hover:text-primary-700">Home</a>
+          <a href="./scholarships.html" class="hover:text-primary-700"
+            >Scholarship</a
           >
-          <a
-            href="./awareness.html"
-            class="hover:text-primary-700"
-            data-translate="nav.awareness"
+          <a href="./contact.html" class="hover:text-primary-700">Contact</a>
+          <a href="./awareness.html" class="hover:text-primary-700"
             >Awareness</a
           >
-          <a
-            href="./scholarships.html"
-            class="hover:text-primary-700"
-            data-translate="nav.scholarships"
-            >Scholarships</a
+          <a href="./admin.html" class="hover:text-primary-700">Admin</a>
+
+          <!-- Logout Button -->
+          <button
+            id="logout-button"
+            class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-3 py-1.5 text-sm font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 hidden"
           >
-          <a
-            href="./quiz.html"
-            class="hover:text-primary-700"
-            data-translate="nav.quiz"
-            >Quiz</a
-          >
-          <a
-            href="./help.html"
-            class="hover:text-primary-700"
-            data-translate="nav.help"
-            >Help</a
-          >
-          <a
-            href="./admin.html"
-            class="text-slate-700 hover:text-primary-600"
-            data-translate="nav.admin"
-            >Admin</a
-          >
-          <a
-            href="./about.html"
-            class="text-primary-700 font-medium"
-            data-translate="nav.about"
-            >About</a
-          >
+            Logout
+          </button>
         </nav>
       </div>
     </header>
@@ -146,5 +121,28 @@
         </p>
       </section>
     </main>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const logoutBtn = document.getElementById("logout-button");
+
+        // Show logout button only if user is logged in
+        if (localStorage.getItem("isLoggedIn") === "true") {
+          logoutBtn.classList.remove("hidden");
+        } else {
+          // If user is not logged in, redirect to login page
+          window.location.href = "./login.html";
+        }
+
+        // Logout action
+        logoutBtn.addEventListener("click", () => {
+          localStorage.removeItem("isLoggedIn");
+          localStorage.removeItem("userId");
+          localStorage.removeItem("userRole");
+          localStorage.removeItem("userLevel");
+          alert("Logged out successfully!");
+          window.location.href = "./login.html";
+        });
+      });
+    </script>
   </body>
 </html>

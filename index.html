@@ -55,6 +55,16 @@
     </script>
   </head>
   <body class="bg-white text-slate-800">
+    <script>
+  // Immediately run login check
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  if (isLoggedIn !== "true") {
+    alert("You must login first to access the website!");
+    window.location.href = "./login.html"; // Redirect to login page
+  }
+</script>
+
     <header id="site-header" class="sticky top-0 z-50 transition-colors">
       <div
         class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between"
@@ -360,29 +370,26 @@
         </div>
       </section>
       <script>
-  document.addEventListener("DOMContentLoaded", () => {
-    // Check if user is logged in (saved in localStorage)
-    const isLoggedIn = localStorage.getItem("isLoggedIn");
+document.addEventListener("DOMContentLoaded", () => {
+  const loginLink = document.getElementById("nav-login-link");
+  const logoutBtn = document.getElementById("logout-button");
 
-    const loginLink = document.getElementById("nav-login-link");
-    const logoutBtn = document.getElementById("logout-button");
+  // Show/hide buttons based on login status
+  if (localStorage.getItem("isLoggedIn") === "true") {
+    loginLink.classList.add("hidden");
+    logoutBtn.classList.remove("hidden");
+  } else {
+    loginLink.classList.remove("hidden");
+    logoutBtn.classList.add("hidden");
+  }
 
-    if (isLoggedIn === "true") {
-      // Show logout, hide login
-      loginLink.classList.add("hidden");
-      logoutBtn.classList.remove("hidden");
-    } else {
-      // Show login, hide logout
-      loginLink.classList.remove("hidden");
-      logoutBtn.classList.add("hidden");
-    }
-
-    // Logout button click → clear login state
-    logoutBtn.addEventListener("click", () => {
-      localStorage.removeItem("isLoggedIn");
-      window.location.href = "./index.html"; // refresh to apply state
-    });
+  // Logout action
+  logoutBtn.addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    alert("Logged out successfully!");
+    window.location.href = "./login.html"; // Redirect to login page
   });
+});
 </script>
   </body>
 </html>
