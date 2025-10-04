@@ -1,84 +1,49 @@
-const express = require("express");
-const cors = require("cors");
-const serverless = require("serverless-http");
+// You will also need to re-think how you store Post and User data without MongoDB.
+// For now, I'm just showing the Cloudinary part for the file upload.
+// If your posts and users need to be persistent, you'll need another storage solution.
 
-const app = express();
-const router = express.Router();
-
-// --- Middleware ---
-app.use(cors());
-app.use(express.json());
-
-// --- Sample DBT Accounts ---
-const dbtAccounts = {
-  "123412341234": { account: "111122223333", bank: "State Bank of India" },
-  "987698769876": { account: "444455556666", bank: "HDFC Bank" },
-  "111122223333": { account: "777788889999", bank: "ICICI Bank" }
-};
-
-// --- Sample Users ---
-const users = [
-  { id: 1, email: "admin@dbt.com", password: "admin123", name: "Admin User", role: "admin", level: "advanced" },
-  { id: 2, email: "student@example.com", password: "student123", name: "Student User", role: "student", level: "beginner" },
-  { id: 3, email: "demo@test.com", password: "demo123", name: "Demo User", role: "student", level: "intermediate" }
-];
-
-// --- Sample Scholarships ---
-const scholarships = [
-  { title: "Merit Scholarship A", description: "For students with excellent academic records.", applyLink: "#", formLink: "#" },
-  { title: "Merit Scholarship B", description: "For students from rural areas with high potential.", applyLink: "#", formLink: "#" }
-];
-
-// ---------------- ROUTES ----------------
-router.get("/scholarships", (req, res) => res.json(scholarships));
-
-router.post("/login", (req, res) => {
-  const { email, password } = req.body;
-  if (!email || !password) return res.status(400).json({ status: "error", message: "Email and password are required" });
-  const user = users.find(u => u.email === email && u.password === password);
-  if (user) {
-    const { password, ...userWithoutPassword } = user;
-    return res.json({ status: "success", message: `Welcome back, ${user.name}!`, user: userWithoutPassword });
-  } else {
-    return res.status(401).json({ status: "error", message: "Invalid email or password" });
-  }
-});
-
-router.post("/check-dbt-status", (req, res) => {
-  const { name, aadhaar, account, bank, userId } = req.body;
-  if (!userId) return res.status(401).json({ status: "error", message: "Authentication required: userId is missing" });
-  if (!name || !aadhaar || !account) return res.status(400).json({ status: "error", message: "Name, Aadhaar, and Account Number are required" });
-
-  const userDbtInfo = dbtAccounts[aadhaar];
-  if (userDbtInfo) {
-    if (userDbtInfo.account === account) {
-      let bankMsg = "";
-      if (bank && userDbtInfo.bank && bank.toLowerCase() !== userDbtInfo.bank.toLowerCase()) {
-        bankMsg = ` (Note: You entered "${bank}", but our records show "${userDbtInfo.bank}")`;
-      }
-      return res.json({ name, aadhaar, account, bank: bank || userDbtInfo.bank, dbtStatus: "DBT-enabled", message: `✅ Your account is DBT-enabled for this Aadhaar and Account Number.${bankMsg}` });
-    } else {
-      return res.json({ name, aadhaar, account, bank, dbtStatus: "Not linked", message: "❌ Aadhaar found, but it is linked to a different account number." });
+app.post('/post', uploadMiddleware.single('file'), async (req, res) => {
+    if (!req.file) {
+        return res.status(400).json('No file uploaded.');
     }
-  } else {
-    return res.json({ name, aadhaar, account, bank, dbtStatus: "Not linked", message: "❌ This Aadhaar number is not found in our DBT records." });
-  }
+
+    try {
+        // Upload image to Cloudinary
+        const result = await cloudinary.uploader.upload(req.file.path, {
+            folder: 'dbt_blog_images' // Optional: organized uploads in a folder
+        });
+
+        // Remove the temporary file created by multer after upload
+        fs.unlinkSync(req.file.path);
+
+        const { token } = req.cookies;
+        jwt.verify(token, process.env.JWT_SECRET, {}, async (err, info) => {
+            if (err) throw err;
+            const { title, summary, content } = req.body;
+            // --- IMPORTANT ---
+            // Without MongoDB, 'Post.create' will no longer work.
+            // You need to decide how to store this data.
+            // For example, if you had an in-memory array of posts, you'd push to it:
+            const newPost = {
+                title,
+                summary,
+                content,
+                cover: result.secure_url, // Use the secure URL from Cloudinary
+                author: info.id, // This author ID would also need to come from somewhere
+                _id: Date.now().toString() // Simple ID generation
+            };
+            // posts.push(newPost); // Example: if 'posts' was a global array
+            // res.json(newPost);
+            // For now, I'll just return a success message with the image URL
+            res.json({ message: "Post data received and image uploaded to Cloudinary", postData: newPost });
+            // --- END IMPORTANT ---
+        });
+    } catch (e) {
+        console.error('Upload error:', e);
+        // Make sure to clean up the temporary file if something went wrong too
+        if (req.file && fs.existsSync(req.file.path)) {
+            fs.unlinkSync(req.file.path);
+        }
+        res.status(500).json('Error uploading file or creating post.');
+    }
 });
-
-router.post("/register", (req, res) => {
-  const { name, email, password } = req.body;
-  if (!name || !email || !password) return res.status(400).json({ status: "error", message: "All fields are required" });
-  const exists = users.find(u => u.email === email);
-  if (exists) return res.status(409).json({ status: "error", message: "User already exists" });
-
-  const newUser = { id: users.length + 1, name, email, password, role: "student", level: "beginner" };
-  users.push(newUser);
-  const { password: pwd, ...userWithoutPassword } = newUser;
-  return res.json({ status: "success", message: "Registration successful", user: userWithoutPassword });
-});
-
-// Attach router
-app.use("/api", router);
-
-// Export serverless handler
-module.exports.handler = serverless(app);
