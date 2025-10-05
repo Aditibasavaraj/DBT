@@ -11,8 +11,7 @@
   "dependencies": {
     "cloudinary": "^2.7.0",
     "cors": "^2.8.5",
-    "express": "^5.1.0",
-    "serverless-http": "^3.0.0"
+    "express": "^5.1.0"
   },
   "repository": {
     "type": "git",
