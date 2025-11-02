@@ -1,183 +1,3 @@
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ScholarConnect — Quiz</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./assets/css/style.css" />
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: { colors: { primary: { 500: "#6366f1", 600: "#4f46e5" } } },
-        },
-      };
-    </script>
-  </head>
-  <body class="bg-white text-slate-800">
-    <header
-      class="border-b border-slate-200 bg-white/80 backdrop-blur supports-[backdrop-filter]:bg-white/60 sticky top-0 z-40"
-    >
-      <div class="container-max px-4 py-4 flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <div
-            class="h-9 w-9 rounded-lg bg-primary-600 text-white grid place-items-center font-semibold brand"
-          >
-            SC
-          </div>
-          <div>
-            <h1 class="text-xl sm:text-2xl font-semibold">Quiz</h1>
-          </div>
-        </div>
-        <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="./index.html" class="hover:text-primary-700">Home</a>
-
-          <a href="./awareness.html" class="hover:text-primary-700"
-            >Awareness</a
-          >
-          <a href="./scholarships.html" class="hover:text-primary-700"
-            >Scholarships</a
-          >
-          <a href="./quiz.html" class="text-primary-700 font-medium">Quiz</a>
-          <a href="./help.html" class="hover:text-primary-700">Help</a>
-          <a href="./admin.html" class="text-slate-700 hover:text-primary-600"
-            >Admin</a
-          >
-          <a href="./about.html" class="hover:text-primary-700">About</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="container-max px-4 py-10">
-      <section>
-        <div
-          class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm"
-        >
-          <h2 class="text-xl sm:text-2xl font-semibold">
-            Aadhaar / DBT Basics
-          </h2>
-          <form id="quiz-form" class="mt-6 grid gap-6">
-            <fieldset class="rounded-xl border border-slate-200 p-4">
-              <legend class="font-medium">
-                1) Aadhaar-linked account primarily means:
-              </legend>
-              <div class="mt-3 space-y-2 text-sm">
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q1" value="a" class="mt-1" />
-                  Enabled for DBT in NPCI</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q1" value="b" class="mt-1" />
-                  Aadhaar present for identity/eKYC</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q1" value="c" class="mt-1" />
-                  Guaranteed scholarship transfer</label
-                >
-              </div>
-            </fieldset>
-            <fieldset class="rounded-xl border border-slate-200 p-4">
-              <legend class="font-medium">
-                2) DBT-enabled Aadhaar-seeded account implies:
-              </legend>
-              <div class="mt-3 space-y-2 text-sm">
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q2" value="a" class="mt-1" />
-                  Generic Aadhaar link only</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q2" value="b" class="mt-1" />
-                  Aadhaar seeded + APBS enabled</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q2" value="c" class="mt-1" />
-                  UPI-only feature</label
-                >
-              </div>
-            </fieldset>
-            <fieldset class="rounded-xl border border-slate-200 p-4">
-              <legend class="font-medium">
-                3) To reliably receive DBT, you should have:
-              </legend>
-              <div class="mt-3 space-y-2 text-sm">
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q3" value="a" class="mt-1" /> Just
-                  Aadhaar-linked account</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q3" value="b" class="mt-1" />
-                  DBT-enabled Aadhaar-seeded account</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q3" value="c" class="mt-1" /> Cash
-                  disbursement</label
-                >
-              </div>
-            </fieldset>
-            <fieldset class="rounded-xl border border-slate-200 p-4">
-              <legend class="font-medium">4) Aadhaar-based DBT uses:</legend>
-              <div class="mt-3 space-y-2 text-sm">
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q4" value="a" class="mt-1" />
-                  NEFT</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q4" value="b" class="mt-1" />
-                  RTGS</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q4" value="c" class="mt-1" /> NPCI
-                  APBS</label
-                >
-              </div>
-            </fieldset>
-            <fieldset class="rounded-xl border border-slate-200 p-4">
-              <legend class="font-medium">
-                5) If DBT fails, first verify:
-              </legend>
-              <div class="mt-3 space-y-2 text-sm">
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q5" value="a" class="mt-1" />
-                  Nothing; it will resend</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q5" value="b" class="mt-1" />
-                  Aadhaar seeded + DBT-enabled in NPCI</label
-                >
-                <label class="flex items-start gap-3"
-                  ><input type="radio" name="q5" value="c" class="mt-1" /> Close
-                  account</label
-                >
-              </div>
-            </fieldset>
-            <div class="flex items-center gap-3">
-              <button
-                type="submit"
-                class="inline-flex items-center justify-center rounded-lg bg-primary-600 text-white px-4 py-2 font-medium hover:bg-primary-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500"
-              >
-                Submit
-              </button>
-            </div>
-            <div id="quiz-result" class="mt-3 text-sm"></div>
-          </form>
-        </div>
-      </section>
-    </main>
-
-    <script src="./assets/js/script.js"></script>
-    <script>
-      window.ScholarConnect && ScholarConnect.initQuiz();
-    </script>
-  </body>
-</html>
-=======
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -213,24 +33,58 @@
             SC
           </div>
           <div>
-            <h1 class="text-xl sm:text-2xl font-semibold" data-translate="nav.quiz">Quiz</h1>
+            <h1
+              class="text-xl sm:text-2xl font-semibold"
+              data-translate="nav.quiz"
+            >
+              Quiz
+            </h1>
           </div>
         </div>
         <nav class="hidden sm:flex items-center gap-6 text-sm">
-          <a href="./index.html" class="hover:text-primary-700" data-translate="nav.home">Home</a>
+          <a
+            href="./index.html"
+            class="hover:text-primary-700"
+            data-translate="nav.home"
+            >Home</a
+          >
 
-          <a href="./awareness.html" class="hover:text-primary-700" data-translate="nav.awareness"
+          <a
+            href="./awareness.html"
+            class="hover:text-primary-700"
+            data-translate="nav.awareness"
             >Awareness</a
           >
-          <a href="./scholarships.html" class="hover:text-primary-700" data-translate="nav.scholarships"
+          <a
+            href="./scholarships.html"
+            class="hover:text-primary-700"
+            data-translate="nav.scholarships"
             >Scholarships</a
           >
-          <a href="./quiz.html" class="text-primary-700 font-medium" data-translate="nav.quiz">Quiz</a>
-          <a href="./help.html" class="hover:text-primary-700" data-translate="nav.help">Help</a>
-          <a href="./admin.html" class="text-slate-700 hover:text-primary-600" data-translate="nav.admin"
+          <a
+            href="./quiz.html"
+            class="text-primary-700 font-medium"
+            data-translate="nav.quiz"
+            >Quiz</a
+          >
+          <a
+            href="./help.html"
+            class="hover:text-primary-700"
+            data-translate="nav.help"
+            >Help</a
+          >
+          <a
+            href="./admin.html"
+            class="text-slate-700 hover:text-primary-600"
+            data-translate="nav.admin"
             >Admin</a
           >
-          <a href="./about.html" class="hover:text-primary-700" data-translate="nav.about">About</a>
+          <a
+            href="./about.html"
+            class="hover:text-primary-700"
+            data-translate="nav.about"
+            >About</a
+          >
         </nav>
       </div>
     </header>
@@ -240,7 +94,10 @@
         <div
           class="rounded-2xl border border-slate-200 p-6 md:p-8 bg-white shadow-sm"
         >
-          <h2 class="text-xl sm:text-2xl font-semibold" data-translate="quiz.title">
+          <h2
+            class="text-xl sm:text-2xl font-semibold"
+            data-translate="quiz.title"
+          >
             Aadhaar / DBT Basics
           </h2>
           <form id="quiz-form" class="mt-6 grid gap-6">
@@ -358,4 +215,3 @@
     </script>
   </body>
 </html>
->>>>>>> friend/main
