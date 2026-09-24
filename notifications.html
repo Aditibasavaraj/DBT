@@ -48,7 +48,7 @@
           <a href="./notifications.html" class="text-primary-700 font-medium"
             >Notifications</a
           >
-          <a href="./resources.html" class="hover:text-primary-700"
+          <a href="./resource.html" class="hover:text-primary-700"
             >Resources</a
           >
           <a href="./contact.html" class="hover:text-primary-700" data-translate="nav.contact">Contact</a>
@@ -72,7 +72,7 @@
           // Replace with logged-in student's Aadhaar
           const aadhaar = "123456789012";
 
-          const res = await fetch(`http://localhost:5000/students/${aadhaar}`);
+          const res = await fetch(`/students/${aadhaar}`);
           if (!res.ok) throw new Error("Failed to fetch student data");
 
           const student = await res.json();

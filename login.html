@@ -146,7 +146,8 @@
         <p class="mt-6 text-sm text-center text-slate-600">
           <span data-translate="login.noAccount">Don't have an account?</span>
           <a
-            href="./register.html"
+            href="#"
+            onclick="showMessage('Registration is disabled in this demo portal. Please use the demo credentials provided below.', 'error'); return false;"
             class="text-primary-600 font-medium hover:underline" data-translate="login.signUp"
             >Sign up</a
           >
@@ -180,7 +181,7 @@
 
             try {
               // Try to connect to server first
-              const res = await fetch("http://localhost:5000/login", {
+              const res = await fetch("/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email, password }),

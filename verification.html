@@ -71,7 +71,7 @@
             >Quiz</a
           >
           <a
-            href="./resources.html"
+            href="./resource.html"
             class="hover:text-primary-700"
             data-translate="nav.resources"
             >Resources</a
@@ -269,7 +269,7 @@
         };
 
         try {
-          const res = await fetch("http://localhost:5000/check-dbt-status", {
+          const res = await fetch("/check-dbt-status", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(data),
@@ -294,7 +294,7 @@
           // Show buttons **only if Not linked**
           if (result.dbtStatus === "Not linked") {
             actionButtons.innerHTML = `
-              <a href="./DBT_Guide.pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
+              <a href="./css/assets/pdfs/dbt-application-guide.pdf" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-blue-600 text-white px-4 py-2 font-medium hover:bg-blue-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500">
                 📄 Get DBT Enablement Guide
               </a>
               <a href="https://nccpi.gov.in/" target="_blank" class="inline-flex items-center justify-center rounded-lg bg-green-600 text-white px-4 py-2 font-medium hover:bg-green-700 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500">

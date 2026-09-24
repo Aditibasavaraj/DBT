@@ -1,11 +1,17 @@
 const express = require("express");
 const cors = require("cors");
+const path = require("path");
+const fs = require("fs");
+
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 // --- Middleware ---
 app.use(cors());
 app.use(express.json());
+
+// --- Static Frontend Files Serving ---
+app.use(express.static(__dirname));
 
 // --- Sample DBT Accounts Data ---
 // Key: Aadhaar, Value: Account number
@@ -55,6 +61,44 @@ const scholarships = [
     formLink: "#",
   },
 ];
+
+// --- Students & Notifications Data (loaded from dbtData.json with fallback) ---
+let studentsData = [
+  {
+    aadhaar: "123456789012",
+    name: "Aditi Basavaraj",
+    dbtStatus: "Ready for DBT",
+    scholarships: [
+      "Merit Scholarship 2025",
+      "STEM Excellence Award"
+    ],
+    notifications: [
+      { type: "info", message: "New scholarship applications open from 1st Oct." },
+      { type: "alert", message: "Verify your Aadhaar-seeded account to receive DBT." }
+    ]
+  },
+  {
+    aadhaar: "987654321098",
+    name: "Ravi Kumar",
+    dbtStatus: "Not linked",
+    scholarships: [
+      "Arts Scholarship 2025"
+    ],
+    notifications: [
+      { type: "warning", message: "KYC refresh required." }
+    ]
+  }
+];
+
+try {
+  const dbtDataRaw = fs.readFileSync(path.join(__dirname, "dbtData.json"), "utf8");
+  const parsedDbtData = JSON.parse(dbtDataRaw);
+  if (parsedDbtData && Array.isArray(parsedDbtData.students)) {
+    studentsData = parsedDbtData.students;
+  }
+} catch (err) {
+  console.warn("Notice: Using fallback student data (dbtData.json read error:", err.message, ")");
+}
 
 // --- Routes ---
 // Login endpoint
@@ -143,8 +187,22 @@ app.post("/check-dbt-status", (req, res) => {
   }
 });
 
+// Student Notifications endpoint
+app.get("/students/:aadhaar", (req, res) => {
+  const { aadhaar } = req.params;
+  const student = studentsData.find((s) => s.aadhaar === aadhaar);
+
+  if (student) {
+    return res.json(student);
+  } else {
+    return res.status(404).json({
+      status: "error",
+      message: "Student record not found."
+    });
+  }
+});
+
 // --- Start server ---
 app.listen(PORT, () =>
   console.log(`Server running at http://localhost:${PORT}`)
 );
-
